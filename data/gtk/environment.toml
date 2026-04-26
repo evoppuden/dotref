@@ -1,0 +1,38 @@
+# GTK configuration knobs
+# Format for dotref
+
+[knob.GTK_THEME]
+name = "GTK_THEME"
+description = "Sets the GTK theme for all GTK applications"
+default = ""
+example = "export GTK_THEME=Adwaita:dark"
+
+[knob.GTK_CSD]
+name = "GTK_CSD"
+description = "Controls Client-Side Decorations for GTK apps (0=disable, 1=enable)"
+default = "1"
+example = "export GTK_CSD=0"
+
+[knob.GTK_MODULES]
+name = "GTK_MODULES"
+description = "Colon-separated list of GTK modules to load"
+default = ""
+example = "export GTK_MODULES=gail:atk-bridge"
+
+[knob.GTK_IM_MODULE]
+name = "GTK_IM_MODULE"
+description = "Input method module for GTK applications"
+default = "ibus"
+example = "export GTK_IM_MODULE=fcitx"
+
+[knob.GDK_SCALE]
+name = "GDK_SCALE"
+description = "Scale factor for GDK/HiDPI displays"
+default = "1"
+example = "export GDK_SCALE=2"
+
+[knob.GDK_DPI_SCALE]
+name = "GDK_DPI_SCALE"
+description = "Fractional scaling factor for GDK displays"
+default = "1.0"
+example = "export GDK_DPI_SCALE=0.8"

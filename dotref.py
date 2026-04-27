@@ -106,7 +106,7 @@ class DotrefDB:
         """Get all config knobs for a subsystem/category."""
         data = self.load_toml(subsystem, category)
         knobs = []
-        for entry in data.get("knobs", []):
+        for entry in data.get("knob", {}).values():
             knobs.append(ConfigKnob(
                 name=entry.get("name", ""),
                 description=entry.get("description", ""),

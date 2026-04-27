@@ -7,15 +7,59 @@
 *A community-maintained, tldr-style lookup for Linux environment variables,
 shell parameters, and setopts — for GTK, ZSH, XDG, Qt, Wayland and more.*
 
-[![Status](https://img.shields.io/badge/status-RFC%20%2F%20idea-yellow?style=flat-square)](https://github.com)
-[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen?style=flat-square)](https://github.com)
+[![Version](https://img.shields.io/badge/version-v0.1.0-blue?style=flat-square)](https://github.com/evoppuden/dotref/releases/tag/Latest)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen?style=flat-square)](https://github.com/evoppuden/dotref/graphs/contributors)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)](https://github.com)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)](https://github.com/evoppuden/dotref/graphs/contributors)
 
 </div>
 
 ---
 
+## 📦 Installation
+
+**Requirements:** `python3` · `python-pipx`
+
+```bash
+git clone https://github.com/evoppuden/dotref
+cd dotref
+pipx install -e .
+mkdir -p ~/.dotref/data
+cp -r data/* ~/.dotref/data/
+```
+
+---
+
+## 💡 Usage
+
+```bash
+dotref list                  # list all available subsystems
+
+dotref show zsh              # list all categories for zsh
+dotref show zsh history      # show zsh history knobs
+
+dotref show gtk              # list all categories for gtk
+dotref show gtk environment  # show gtk environment variables
+
+dotref search theme          # search by keyword across all subsystems
+dotref search gtk            # search by keyword across all subsystems
+```
+
+---
+
+## ✍️ Next Steps
+
+The most valuable thing you can do right now is contribute a .toml file for a subsystem you know well — XDG, Qt, Wayland, Bash, SDL, Mesa, or anything else. You don't need to know Python. Just copy the format from an existing file in data/, fill it in, and open a PR.
+
+The dream is a community-maintained reference that covers everything — the kind of tool you reach for before opening a browser.
+
+Improvements on the list
+- [ ] `dotref update` Support for auto pull /data from the latest repo to ~/.dotref/data
+- [ ] `<subsystem>` Replaced with `<app>` or `<package>`. Let's keep it simple :)
+- [ ] `dotref show <subsystem>` replaced with `dotref <subsystem>`
+- [ ] DotrefDB installation in ~/.dotref/data included in `pipx install -e .`
+
+---
 ## 🤔 The Problem
 
 You're setting up a minimal Wayland compositor. You vaguely remember there's an env var that forces Qt apps to use Wayland. So you open a browser, dig through the Arch Wiki, scroll past three unrelated sections, and finally find `QT_QPA_PLATFORM=wayland` buried in a paragraph.

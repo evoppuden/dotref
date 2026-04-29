@@ -1,0 +1,82 @@
+# uwsm (Universal Wayland Session Manager) environment variables
+# Source: https://github.com/Vladimir-csp/uwsm , man uwsm
+
+[meta]
+docs = "https://github.com/Vladimir-csp/uwsm"
+
+[knob.UWSM_USE_SESSION_SLICE]
+name = "UWSM_USE_SESSION_SLICE"
+type = "env"
+description = "Place app units under session.slice instead of app.slice. Some workflows need this for systemd-oomd or resource accounting."
+default = "false"
+example = "export UWSM_USE_SESSION_SLICE=true"
+
+[knob.UWSM_FINALIZE_VARNAMES]
+name = "UWSM_FINALIZE_VARNAMES"
+type = "env"
+description = "Whitespace-separated list of additional variables to import into the systemd user manager and dbus activation environment via 'uwsm finalize'."
+default = ""
+example = "export UWSM_FINALIZE_VARNAMES=\"MY_VAR ANOTHER_VAR\""
+
+[knob.UWSM_WAIT_VARNAMES]
+name = "UWSM_WAIT_VARNAMES"
+type = "env"
+description = "Variables that must appear before uwsm finalize considers the compositor ready"
+default = "WAYLAND_DISPLAY"
+example = "export UWSM_WAIT_VARNAMES=\"WAYLAND_DISPLAY DISPLAY\""
+
+[knob.UWSM_WAIT_VARNAMES_SETTLETIME]
+name = "UWSM_WAIT_VARNAMES_SETTLETIME"
+type = "env"
+description = "Seconds uwsm waits after the last UWSM_WAIT_VARNAMES variable appears, to let the compositor stabilize"
+default = "0.2"
+example = "export UWSM_WAIT_VARNAMES_SETTLETIME=0.5"
+
+[knob.UWSM_APP_UNIT_TYPE]
+name = "UWSM_APP_UNIT_TYPE"
+type = "env"
+description = "Whether 'uwsm app' launches each app as a systemd scope or service unit. Values: scope, service"
+default = "scope"
+example = "export UWSM_APP_UNIT_TYPE=service"
+
+[knob.UWSM_APP_CGROUPS]
+name = "UWSM_APP_CGROUPS"
+type = "env"
+description = "Whether 'uwsm app' should place each app in its own cgroup"
+default = "true"
+example = "export UWSM_APP_CGROUPS=false"
+
+[knob.UWSM_APP_UNIT_NAME_GENERATOR]
+name = "UWSM_APP_UNIT_NAME_GENERATOR"
+type = "env"
+description = "Path to an external script that generates app unit names. Useful when several apps share a binary."
+default = ""
+example = "export UWSM_APP_UNIT_NAME_GENERATOR=$HOME/.local/bin/uwsm-name"
+
+[knob.UWSM_SILENT_START]
+name = "UWSM_SILENT_START"
+type = "env"
+description = "Suppress informational stdout/stderr during 'uwsm start'. Errors are still printed."
+default = "false"
+example = "export UWSM_SILENT_START=true"
+
+[knob.UWSM_NO_PLYMOUTH_QUIT]
+name = "UWSM_NO_PLYMOUTH_QUIT"
+type = "env"
+description = "Skip the automatic 'plymouth quit' call uwsm runs at start"
+default = "false"
+example = "export UWSM_NO_PLYMOUTH_QUIT=true"
+
+[knob.UWSM_DEBUG]
+name = "UWSM_DEBUG"
+type = "env"
+description = "Enable debug logging from uwsm itself (logs go to the journal under uwsm/uwsm-app units)"
+default = "false"
+example = "export UWSM_DEBUG=true"
+
+[knob.UWSM_NO_TWEAKS]
+name = "UWSM_NO_TWEAKS"
+type = "env"
+description = "Skip uwsm's compositor-specific tweak scripts under /etc/uwsm/ and ~/.config/uwsm/"
+default = "false"
+example = "export UWSM_NO_TWEAKS=true"

@@ -1,0 +1,97 @@
+# Variables imported into the systemd user manager and dbus activation
+# environment by 'uwsm finalize'. Add custom names via UWSM_FINALIZE_VARNAMES.
+# Source: man uwsm, https://github.com/Vladimir-csp/uwsm
+
+[meta]
+docs = "https://github.com/Vladimir-csp/uwsm"
+
+[knob.WAYLAND_DISPLAY]
+name = "WAYLAND_DISPLAY"
+type = "env"
+description = "Wayland socket name. Set by the compositor; clients connect to it."
+default = "wayland-0"
+example = "echo $WAYLAND_DISPLAY"
+
+[knob.DISPLAY]
+name = "DISPLAY"
+type = "env"
+description = "X11 display name, set when XWayland is running"
+default = ""
+example = "echo $DISPLAY"
+
+[knob.XAUTHORITY]
+name = "XAUTHORITY"
+type = "env"
+description = "Path to the X11 auth cookie file used by XWayland clients"
+default = "$XDG_RUNTIME_DIR/xauth"
+example = "echo $XAUTHORITY"
+
+[knob.XCURSOR_THEME]
+name = "XCURSOR_THEME"
+type = "env"
+description = "Cursor theme name for X11/XWayland clients (and fallback for Wayland)"
+default = ""
+example = "export XCURSOR_THEME=Adwaita"
+
+[knob.XCURSOR_SIZE]
+name = "XCURSOR_SIZE"
+type = "env"
+description = "Cursor size in pixels"
+default = "24"
+example = "export XCURSOR_SIZE=24"
+
+[knob.XDG_SESSION_TYPE]
+name = "XDG_SESSION_TYPE"
+type = "env"
+description = "Session type marker — 'wayland' under uwsm"
+default = ""
+example = "export XDG_SESSION_TYPE=wayland"
+
+[knob.XDG_CURRENT_DESKTOP]
+name = "XDG_CURRENT_DESKTOP"
+type = "env"
+description = "Identifier(s) of the active desktop, used by portals and OnlyShowIn=. uwsm sets it from the chosen compositor."
+default = ""
+example = "export XDG_CURRENT_DESKTOP=Hyprland"
+
+[knob.XDG_SESSION_DESKTOP]
+name = "XDG_SESSION_DESKTOP"
+type = "env"
+description = "Single desktop name, derived from the .desktop file uwsm started"
+default = ""
+example = "export XDG_SESSION_DESKTOP=Hyprland"
+
+[knob.XDG_MENU_PREFIX]
+name = "XDG_MENU_PREFIX"
+type = "env"
+description = "Prefix for the active applications menu file"
+default = ""
+example = "export XDG_MENU_PREFIX=arch-"
+
+[knob.QT_QPA_PLATFORMTHEME]
+name = "QT_QPA_PLATFORMTHEME"
+type = "env"
+description = "Qt platform theme plugin. uwsm forwards it so Qt apps started later by .desktop activation see it."
+default = ""
+example = "export QT_QPA_PLATFORMTHEME=qt6ct"
+
+[knob.GTK_THEME]
+name = "GTK_THEME"
+type = "env"
+description = "GTK theme name. Forwarded into the user manager environment so launched apps inherit it."
+default = ""
+example = "export GTK_THEME=Adwaita:dark"
+
+[knob.SSH_AUTH_SOCK]
+name = "SSH_AUTH_SOCK"
+type = "env"
+description = "Path to the SSH agent socket. Forwarded so apps started via systemd see the user's agent."
+default = ""
+example = "echo $SSH_AUTH_SOCK"
+
+[knob.HYPRLAND_INSTANCE_SIGNATURE]
+name = "HYPRLAND_INSTANCE_SIGNATURE"
+type = "env"
+description = "Hyprland-specific instance ID. Forwarded by uwsm so hyprctl works in user services."
+default = ""
+example = "echo $HYPRLAND_INSTANCE_SIGNATURE"

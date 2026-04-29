@@ -1,0 +1,110 @@
+# Mesa driver selection and loading
+# Source: https://docs.mesa3d.org/envvars.html
+
+[meta]
+docs = "https://docs.mesa3d.org/envvars.html"
+
+[knob.MESA_LOADER_DRIVER_OVERRIDE]
+name = "MESA_LOADER_DRIVER_OVERRIDE"
+type = "env"
+description = "Force the Mesa GL driver loader to load a specific driver (e.g., zink, llvmpipe, iris, radeonsi)."
+default = ""
+example = "export MESA_LOADER_DRIVER_OVERRIDE=zink"
+
+[knob.GALLIUM_DRIVER]
+name = "GALLIUM_DRIVER"
+type = "env"
+description = "Force a specific Gallium driver: llvmpipe, softpipe, zink, virgl, freedreno, radeonsi."
+default = ""
+example = "export GALLIUM_DRIVER=llvmpipe"
+
+[knob.LIBGL_ALWAYS_SOFTWARE]
+name = "LIBGL_ALWAYS_SOFTWARE"
+type = "env"
+description = "Force software rasterization (llvmpipe). Useful for headless rendering or broken GPU stacks."
+default = "0"
+example = "export LIBGL_ALWAYS_SOFTWARE=1"
+
+[knob.LIBGL_ALWAYS_INDIRECT]
+name = "LIBGL_ALWAYS_INDIRECT"
+type = "env"
+description = "Force indirect GLX rendering. Useful for X11 forwarding over SSH."
+default = "0"
+example = "export LIBGL_ALWAYS_INDIRECT=1"
+
+[knob.LIBGL_DRIVERS_PATH]
+name = "LIBGL_DRIVERS_PATH"
+type = "env"
+description = "Colon-separated list of directories where DRI drivers (.so) are searched."
+default = ""
+example = "export LIBGL_DRIVERS_PATH=/usr/lib/dri"
+
+[knob.MESA_LOADER_NO_HW]
+name = "MESA_LOADER_NO_HW"
+type = "env"
+description = "Disable hardware drivers; force the loader to fall back to software rendering."
+default = "0"
+example = "export MESA_LOADER_NO_HW=1"
+
+[knob.MESA_GLSL_VERSION_OVERRIDE]
+name = "MESA_GLSL_VERSION_OVERRIDE"
+type = "env"
+description = "Override the reported GLSL version (e.g., 460 for GLSL 4.60). Some apps gate features on this."
+default = ""
+example = "export MESA_GLSL_VERSION_OVERRIDE=460"
+
+[knob.MESA_GL_VERSION_OVERRIDE]
+name = "MESA_GL_VERSION_OVERRIDE"
+type = "env"
+description = "Override the reported OpenGL version. Append 'COMPAT' or 'CORE' or 'FC' for profile."
+default = ""
+example = "export MESA_GL_VERSION_OVERRIDE=4.6COMPAT"
+
+[knob.MESA_GLES_VERSION_OVERRIDE]
+name = "MESA_GLES_VERSION_OVERRIDE"
+type = "env"
+description = "Override the reported OpenGL ES version."
+default = ""
+example = "export MESA_GLES_VERSION_OVERRIDE=3.2"
+
+[knob.MESA_EXTENSION_OVERRIDE]
+name = "MESA_EXTENSION_OVERRIDE"
+type = "env"
+description = "Space-separated extensions to enable (+ext) or disable (-ext)."
+default = ""
+example = "export MESA_EXTENSION_OVERRIDE='-GL_EXT_foo +GL_ARB_bar'"
+
+[knob.MESA_NO_ERROR]
+name = "MESA_NO_ERROR"
+type = "env"
+description = "Disable GL error checking for a small perf boost. Risky — only for trusted benchmarks."
+default = "0"
+example = "export MESA_NO_ERROR=1"
+
+[knob.DRI_PRIME]
+name = "DRI_PRIME"
+type = "env"
+description = "Select a non-default GPU on PRIME-enabled systems (1 = secondary, or vendor-id:device-id)."
+default = "0"
+example = "DRI_PRIME=1 glxgears"
+
+[knob.__GLX_VENDOR_LIBRARY_NAME]
+name = "__GLX_VENDOR_LIBRARY_NAME"
+type = "env"
+description = "Force GLVND to load a specific GLX vendor library (mesa or nvidia). Useful on hybrid setups."
+default = ""
+example = "export __GLX_VENDOR_LIBRARY_NAME=mesa"
+
+[knob.MESA_VK_DEVICE_SELECT]
+name = "MESA_VK_DEVICE_SELECT"
+type = "env"
+description = "Pick a Vulkan device by vendor:device ID, or 'list' to print all devices."
+default = ""
+example = "export MESA_VK_DEVICE_SELECT=list"
+
+[knob.MESA_VK_DEVICE_SELECT_FORCE_DEFAULT_DEVICE]
+name = "MESA_VK_DEVICE_SELECT_FORCE_DEFAULT_DEVICE"
+type = "env"
+description = "Override the default Vulkan device by index. Combine with MESA_VK_DEVICE_SELECT=list to find indices."
+default = ""
+example = "export MESA_VK_DEVICE_SELECT_FORCE_DEFAULT_DEVICE=1"

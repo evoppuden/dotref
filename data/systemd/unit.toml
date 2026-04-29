@@ -1,0 +1,138 @@
+# systemd [Unit] and [Install] section directives
+# Source: man systemd.unit
+
+[meta]
+docs = "https://www.freedesktop.org/software/systemd/man/latest/systemd.unit.html"
+
+[knob.Description]
+name = "Description"
+type = "config"
+description = "Short human-readable name shown by systemctl status and in logs"
+default = ""
+example = "Description=My background sync"
+
+[knob.Documentation]
+name = "Documentation"
+type = "config"
+description = "Space-separated URIs (man:, https://, file://) pointing at docs for this unit"
+default = ""
+example = "Documentation=man:foo(1) https://example.com/foo"
+
+[knob.Requires]
+name = "Requires"
+type = "config"
+description = "Hard dependency: if a listed unit fails or stops, this unit is also stopped"
+default = ""
+example = "Requires=network-online.target"
+
+[knob.Wants]
+name = "Wants"
+type = "config"
+description = "Soft dependency: pull units in but don't fail if they fail"
+default = ""
+example = "Wants=network-online.target"
+
+[knob.Requisite]
+name = "Requisite"
+type = "config"
+description = "Like Requires=, but the listed unit must already be active; do not start it."
+default = ""
+example = "Requisite=mounts.target"
+
+[knob.BindsTo]
+name = "BindsTo"
+type = "config"
+description = "Stronger Requires=: this unit also stops when the bound unit becomes inactive for any reason"
+default = ""
+example = "BindsTo=device-tun0.device"
+
+[knob.PartOf]
+name = "PartOf"
+type = "config"
+description = "Propagate stop/restart from the listed unit to this one (one-way)"
+default = ""
+example = "PartOf=foo.target"
+
+[knob.Conflicts]
+name = "Conflicts"
+type = "config"
+description = "Starting this unit stops any listed conflicting units (and vice versa)"
+default = ""
+example = "Conflicts=shutdown.target"
+
+[knob.Before]
+name = "Before"
+type = "config"
+description = "Ordering: this unit starts before the listed units"
+default = ""
+example = "Before=network.target"
+
+[knob.After]
+name = "After"
+type = "config"
+description = "Ordering: this unit starts after the listed units"
+default = ""
+example = "After=network-online.target"
+
+[knob.OnFailure]
+name = "OnFailure"
+type = "config"
+description = "Units to start when this unit enters a failed state. Common pattern: alert.service."
+default = ""
+example = "OnFailure=alert@%n.service"
+
+[knob.ConditionPathExists]
+name = "ConditionPathExists"
+type = "config"
+description = "Skip the unit if the path doesn't exist. Prefix with '!' to invert."
+default = ""
+example = "ConditionPathExists=/etc/foo.conf"
+
+[knob.ConditionACPower]
+name = "ConditionACPower"
+type = "config"
+description = "Run only when on AC power. Pair with timer-based maintenance jobs."
+default = ""
+example = "ConditionACPower=true"
+
+[knob.AssertPathExists]
+name = "AssertPathExists"
+type = "config"
+description = "Like Condition*, but failing assertion fails the unit (rather than silently skipping)"
+default = ""
+example = "AssertPathExists=/var/lib/myapp"
+
+[knob.WantedBy]
+name = "[Install] WantedBy"
+type = "config"
+description = "Target(s) that should pull this unit in when 'systemctl enable' is run"
+default = ""
+example = "WantedBy=multi-user.target"
+
+[knob.RequiredBy]
+name = "[Install] RequiredBy"
+type = "config"
+description = "Like WantedBy=, but a hard Requires= relation is created"
+default = ""
+example = "RequiredBy=foo.service"
+
+[knob.Alias]
+name = "[Install] Alias"
+type = "config"
+description = "Alternative names for the unit (symlinks created on enable)"
+default = ""
+example = "Alias=mything.service"
+
+[knob.Also]
+name = "[Install] Also"
+type = "config"
+description = "Other units to enable/disable together with this one"
+default = ""
+example = "Also=foo.socket"
+
+[knob.DefaultInstance]
+name = "[Install] DefaultInstance"
+type = "config"
+description = "Default %i for template units when 'systemctl enable foo@.service' is called without an instance"
+default = ""
+example = "DefaultInstance=main"

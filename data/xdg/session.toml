@@ -1,0 +1,69 @@
+# XDG session and desktop variables
+# Set by login manager / display manager / compositor.
+# Source: systemd-logind(8), freedesktop.org
+
+[meta]
+docs = "https://www.freedesktop.org/software/systemd/man/latest/systemd-logind.service.html"
+
+[knob.XDG_CURRENT_DESKTOP]
+name = "XDG_CURRENT_DESKTOP"
+type = "env"
+description = "Colon-separated list of desktop environment identifiers; used by portals, .desktop OnlyShowIn/NotShowIn, and apps for desktop integration"
+default = ""
+example = "export XDG_CURRENT_DESKTOP=Hyprland"
+
+[knob.XDG_SESSION_DESKTOP]
+name = "XDG_SESSION_DESKTOP"
+type = "env"
+description = "Single identifier of the current desktop session; logged by systemd-logind"
+default = ""
+example = "export XDG_SESSION_DESKTOP=Hyprland"
+
+[knob.XDG_SESSION_TYPE]
+name = "XDG_SESSION_TYPE"
+type = "env"
+description = "Type of the current session: x11, wayland, tty, or mir"
+default = ""
+example = "export XDG_SESSION_TYPE=wayland"
+
+[knob.XDG_SESSION_CLASS]
+name = "XDG_SESSION_CLASS"
+type = "env"
+description = "Class of the current session: user, greeter, lock-screen, or background"
+default = "user"
+example = "XDG_SESSION_CLASS=user"
+
+[knob.XDG_SESSION_ID]
+name = "XDG_SESSION_ID"
+type = "env"
+description = "Numeric identifier of the current login session, assigned by systemd-logind"
+default = ""
+example = "echo $XDG_SESSION_ID"
+
+[knob.XDG_SEAT]
+name = "XDG_SEAT"
+type = "env"
+description = "Identifier of the seat the session is attached to (e.g. seat0)"
+default = "seat0"
+example = "echo $XDG_SEAT"
+
+[knob.XDG_VTNR]
+name = "XDG_VTNR"
+type = "env"
+description = "Virtual terminal number on which the session runs"
+default = ""
+example = "echo $XDG_VTNR"
+
+[knob.XDG_MENU_PREFIX]
+name = "XDG_MENU_PREFIX"
+type = "env"
+description = "Prefix used to locate the active applications menu file (e.g. gnome- → gnome-applications.menu)"
+default = ""
+example = "export XDG_MENU_PREFIX=arch-"
+
+[knob.XDG_BACKEND]
+name = "XDG_BACKEND"
+type = "env"
+description = "Hint used by some toolkits to select the windowing backend (informal)"
+default = ""
+example = "export XDG_BACKEND=wayland"

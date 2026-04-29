@@ -1,0 +1,153 @@
+# Hyprland input configuration
+# Set inside the input { } section of hyprland.conf.
+# Source: https://wiki.hyprland.org/Configuring/Variables/#input
+
+[meta]
+docs = "https://wiki.hyprland.org/Configuring/Variables/#input"
+
+[knob.kb_layout]
+name = "kb_layout"
+type = "config"
+description = "XKB keyboard layout(s); comma-separated for multiple"
+default = "us"
+example = "kb_layout = us,pl"
+
+[knob.kb_variant]
+name = "kb_variant"
+type = "config"
+description = "XKB keyboard variant matching kb_layout (e.g. dvorak, colemak)"
+default = ""
+example = "kb_variant = ,dvorak"
+
+[knob.kb_options]
+name = "kb_options"
+type = "config"
+description = "Comma-separated XKB options (caps:swapescape, grp:alt_shift_toggle, etc.)"
+default = ""
+example = "kb_options = grp:alt_shift_toggle,caps:escape"
+
+[knob.kb_model]
+name = "kb_model"
+type = "config"
+description = "XKB keyboard model"
+default = ""
+example = "kb_model = pc105"
+
+[knob.kb_rules]
+name = "kb_rules"
+type = "config"
+description = "XKB rules file to use"
+default = ""
+example = "kb_rules = evdev"
+
+[knob.numlock_by_default]
+name = "numlock_by_default"
+type = "config"
+description = "Enable Num Lock on session start"
+default = "false"
+example = "numlock_by_default = true"
+
+[knob.repeat_rate]
+name = "repeat_rate"
+type = "config"
+description = "Key repeat rate in characters per second"
+default = "25"
+example = "repeat_rate = 50"
+
+[knob.repeat_delay]
+name = "repeat_delay"
+type = "config"
+description = "Delay before key repeat starts, in milliseconds"
+default = "600"
+example = "repeat_delay = 300"
+
+[knob.sensitivity]
+name = "sensitivity"
+type = "config"
+description = "Mouse/pointer sensitivity multiplier (-1.0 to 1.0); applied as libinput accel speed"
+default = "0.0"
+example = "sensitivity = -0.2"
+
+[knob.accel_profile]
+name = "accel_profile"
+type = "config"
+description = "Pointer acceleration profile: adaptive, flat, or custom. Empty = libinput default."
+default = ""
+example = "accel_profile = flat"
+
+[knob.force_no_accel]
+name = "force_no_accel"
+type = "config"
+description = "Bypass libinput acceleration entirely; use raw input. Conflicts with sensitivity."
+default = "false"
+example = "force_no_accel = true"
+
+[knob.left_handed]
+name = "left_handed"
+type = "config"
+description = "Swap left and right mouse buttons"
+default = "false"
+example = "left_handed = true"
+
+[knob.scroll_method]
+name = "scroll_method"
+type = "config"
+description = "Mouse scroll method: 2fg, edge, on_button_down, no_scroll"
+default = ""
+example = "scroll_method = 2fg"
+
+[knob.natural_scroll]
+name = "natural_scroll"
+type = "config"
+description = "Invert scroll direction (macOS-style)"
+default = "false"
+example = "natural_scroll = true"
+
+[knob.follow_mouse]
+name = "follow_mouse"
+type = "config"
+description = "Focus-follows-mouse mode: 0 disabled, 1 full, 2 loose, 3 strict"
+default = "1"
+example = "follow_mouse = 2"
+
+[knob.float_switch_override_focus]
+name = "float_switch_override_focus"
+type = "config"
+description = "How floating <-> tiled focus is treated: 0 disabled, 1 enabled, 2 also for mouse"
+default = "1"
+example = "float_switch_override_focus = 2"
+
+[knob.touchpad_natural_scroll]
+name = "touchpad:natural_scroll"
+type = "config"
+description = "Natural scrolling on the touchpad"
+default = "false"
+example = "touchpad { natural_scroll = true }"
+
+[knob.touchpad_disable_while_typing]
+name = "touchpad:disable_while_typing"
+type = "config"
+description = "Disable touchpad while typing on the keyboard"
+default = "true"
+example = "touchpad { disable_while_typing = false }"
+
+[knob.touchpad_tap_to_click]
+name = "touchpad:tap-to-click"
+type = "config"
+description = "Treat a tap on the touchpad as a click"
+default = "true"
+example = "touchpad { tap-to-click = true }"
+
+[knob.touchpad_clickfinger_behavior]
+name = "touchpad:clickfinger_behavior"
+type = "config"
+description = "Use number of fingers as button (1=left, 2=right, 3=middle) instead of physical zones"
+default = "false"
+example = "touchpad { clickfinger_behavior = true }"
+
+[knob.touchpad_scroll_factor]
+name = "touchpad:scroll_factor"
+type = "config"
+description = "Scroll speed multiplier for the touchpad"
+default = "1.0"
+example = "touchpad { scroll_factor = 0.4 }"

@@ -1,0 +1,83 @@
+# Hyprland general configuration
+# Set inside the general { } section of hyprland.conf.
+# Source: https://wiki.hyprland.org/Configuring/Variables/#general
+
+[meta]
+docs = "https://wiki.hyprland.org/Configuring/Variables/#general"
+
+[knob.gaps_in]
+name = "gaps_in"
+type = "config"
+description = "Inner gaps between windows in pixels"
+default = "5"
+example = "gaps_in = 4"
+
+[knob.gaps_out]
+name = "gaps_out"
+type = "config"
+description = "Outer gaps between windows and monitor edges in pixels"
+default = "20"
+example = "gaps_out = 10"
+
+[knob.gaps_workspaces]
+name = "gaps_workspaces"
+type = "config"
+description = "Gap between workspaces during slide animations"
+default = "0"
+example = "gaps_workspaces = 50"
+
+[knob.border_size]
+name = "border_size"
+type = "config"
+description = "Window border thickness in pixels"
+default = "1"
+example = "border_size = 2"
+
+[knob.no_border_on_floating]
+name = "no_border_on_floating"
+type = "config"
+description = "Hide borders on floating windows"
+default = "false"
+example = "no_border_on_floating = true"
+
+[knob.col_active_border]
+name = "col.active_border"
+type = "config"
+description = "Color (or gradient) of the active window border. rgba()/rgb()/gradient syntax accepted."
+default = "0xffffffff"
+example = "col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg"
+
+[knob.col_inactive_border]
+name = "col.inactive_border"
+type = "config"
+description = "Color of inactive window borders"
+default = "0xff444444"
+example = "col.inactive_border = rgba(595959aa)"
+
+[knob.layout]
+name = "layout"
+type = "config"
+description = "Window layout engine: dwindle or master"
+default = "dwindle"
+example = "layout = master"
+
+[knob.resize_on_border]
+name = "resize_on_border"
+type = "config"
+description = "Allow resizing windows by dragging the border"
+default = "false"
+example = "resize_on_border = true"
+
+[knob.allow_tearing]
+name = "allow_tearing"
+type = "config"
+description = "Globally enable screen tearing for fullscreen windows that opt in via a window rule. Lower latency for games."
+default = "false"
+example = "allow_tearing = true"
+
+[knob.snap_enabled]
+name = "snap:enabled"
+type = "config"
+description = "Enable window snapping while dragging floating windows"
+default = "false"
+example = "snap { enabled = true }"

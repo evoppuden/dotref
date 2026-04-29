@@ -1,0 +1,75 @@
+# Mesa GLSL compiler / shader options
+# Source: https://docs.mesa3d.org/envvars.html
+
+[meta]
+docs = "https://docs.mesa3d.org/envvars.html"
+
+[knob.MESA_GLSL]
+name = "MESA_GLSL"
+type = "env"
+description = "Comma-separated GLSL compiler flags: dump, log, nopvert, nopfrag, useprog, errors, source, opt, no_opt, uniform, useprog_dump_only."
+default = ""
+example = "export MESA_GLSL=dump"
+
+[knob.MESA_GLSL_CACHE_DISABLE]
+name = "MESA_GLSL_CACHE_DISABLE"
+type = "env"
+description = "Disable the GLSL on-disk cache. Use when debugging shader compilation issues."
+default = "false"
+example = "export MESA_GLSL_CACHE_DISABLE=true"
+
+[knob.MESA_GLSL_CACHE_DIR]
+name = "MESA_GLSL_CACHE_DIR"
+type = "env"
+description = "Override the GLSL cache directory."
+default = "$XDG_CACHE_HOME/mesa_shader_cache"
+example = "export MESA_GLSL_CACHE_DIR=/tmp/glsl_cache"
+
+[knob.MESA_GLSL_CACHE_MAX_SIZE]
+name = "MESA_GLSL_CACHE_MAX_SIZE"
+type = "env"
+description = "Max GLSL cache disk size."
+default = "1G"
+example = "export MESA_GLSL_CACHE_MAX_SIZE=2G"
+
+[knob.MESA_SPIRV_LOG_LEVEL]
+name = "MESA_SPIRV_LOG_LEVEL"
+type = "env"
+description = "Verbosity for SPIR-V translation: error, warning, info."
+default = "error"
+example = "export MESA_SPIRV_LOG_LEVEL=info"
+
+[knob.MESA_GL_VERSION_OVERRIDE]
+name = "MESA_GL_VERSION_OVERRIDE"
+type = "env"
+description = "Override reported GL version; some apps gate GLSL features on this."
+default = ""
+example = "export MESA_GL_VERSION_OVERRIDE=4.6"
+
+[knob.MESA_GLSL_VERSION_OVERRIDE]
+name = "MESA_GLSL_VERSION_OVERRIDE"
+type = "env"
+description = "Override the reported GLSL version (e.g., 460)."
+default = ""
+example = "export MESA_GLSL_VERSION_OVERRIDE=460"
+
+[knob.allow_glsl_extension_directive_midshader]
+name = "allow_glsl_extension_directive_midshader"
+type = "config"
+description = "drirc/00-mesa-defaults.conf: permit non-leading #extension directives. Some games rely on it."
+default = "false"
+example = "<option name=\"allow_glsl_extension_directive_midshader\" value=\"true\" />"
+
+[knob.allow_higher_compat_version]
+name = "allow_higher_compat_version"
+type = "config"
+description = "drirc: allow GL compatibility profile to advertise higher versions than 3.0."
+default = "false"
+example = "<option name=\"allow_higher_compat_version\" value=\"true\" />"
+
+[knob.allow_glsl_relaxed_es]
+name = "allow_glsl_relaxed_es"
+type = "config"
+description = "drirc: relax some ES GLSL strictness for buggy apps."
+default = "false"
+example = "<option name=\"allow_glsl_relaxed_es\" value=\"true\" />"

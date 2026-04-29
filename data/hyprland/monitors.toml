@@ -1,0 +1,83 @@
+# Hyprland monitors and outputs
+# Top-level monitor= directive in hyprland.conf, plus a few related cross-section options.
+# Source: https://wiki.hyprland.org/Configuring/Monitors/
+
+[meta]
+docs = "https://wiki.hyprland.org/Configuring/Monitors/"
+
+[knob.monitor]
+name = "monitor"
+type = "config"
+description = "Configure an output. Format: monitor = NAME, RESOLUTION, POSITION, SCALE [, transform, mirror, bitdepth, vrr]. NAME accepts the connector (DP-1), description (desc:Make Model), or empty for fallback."
+default = "(no defaults; outputs disabled if not configured)"
+example = "monitor = DP-1, 2560x1440@165, 0x0, 1"
+
+[knob.monitor_preferred]
+name = "monitor (preferred)"
+type = "config"
+description = "Use the EDID-preferred mode and let Hyprland pick the position. Good fallback rule."
+default = ""
+example = "monitor = , preferred, auto, 1"
+
+[knob.monitor_disable]
+name = "monitor (disable)"
+type = "config"
+description = "Disable an output explicitly"
+default = ""
+example = "monitor = HDMI-A-1, disable"
+
+[knob.monitor_highrr]
+name = "monitor (highrr)"
+type = "config"
+description = "Pick the highest available refresh rate at the preferred resolution"
+default = ""
+example = "monitor = DP-2, highrr, auto, 1"
+
+[knob.monitor_transform]
+name = "monitor (transform)"
+type = "config"
+description = "Rotate the output. Values: 0 (normal), 1 (90°), 2 (180°), 3 (270°), 4-7 (flipped variants)"
+default = "0"
+example = "monitor = DP-3, 1080x1920, 0x0, 1, transform, 1"
+
+[knob.monitor_mirror]
+name = "monitor (mirror)"
+type = "config"
+description = "Mirror another output. The mirrored output is identified by its connector name."
+default = ""
+example = "monitor = HDMI-A-1, 1920x1080, 0x0, 1, mirror, DP-1"
+
+[knob.monitor_bitdepth]
+name = "monitor (bitdepth)"
+type = "config"
+description = "10-bit color output. Requires HDR-capable display and driver. Values: 8 or 10."
+default = "8"
+example = "monitor = DP-1, 3840x2160@60, 0x0, 1, bitdepth, 10"
+
+[knob.monitor_vrr]
+name = "monitor (vrr)"
+type = "config"
+description = "Per-output Variable Refresh Rate / Adaptive Sync. 0 off, 1 on, 2 fullscreen-only"
+default = "0"
+example = "monitor = DP-1, 2560x1440@144, 0x0, 1, vrr, 1"
+
+[knob.workspace_monitor]
+name = "workspace (monitor binding)"
+type = "config"
+description = "Pin a workspace to a specific monitor. Format: workspace = NAME, monitor:OUTPUT [, default:true]."
+default = ""
+example = "workspace = 1, monitor:DP-1, default:true"
+
+[knob.misc_vrr]
+name = "misc:vrr"
+type = "config"
+description = "Global VRR fallback for outputs that don't override it. 0 off, 1 on, 2 fullscreen-only, 3 fullscreen-only fullscreen-or-game"
+default = "0"
+example = "misc { vrr = 1 }"
+
+[knob.cursor_no_hardware_cursors]
+name = "cursor:no_hardware_cursors"
+type = "config"
+description = "Disable HW cursor planes. Workaround for NVIDIA flicker on multi-monitor."
+default = "false"
+example = "cursor { no_hardware_cursors = true }"

@@ -1,0 +1,54 @@
+# Qt widget styles, themes, and Qt Quick Controls
+# Source: https://doc.qt.io/qt-6/qtquickcontrols-styles.html, https://doc.qt.io/qt-6/qstyle.html
+
+[meta]
+docs = "https://doc.qt.io/qt-6/qtquickcontrols-styles.html"
+
+[knob.QT_STYLE_OVERRIDE]
+name = "QT_STYLE_OVERRIDE"
+type = "env"
+description = "Force a specific Qt widget style (Fusion, Windows, kvantum, Breeze, Adwaita-qt)."
+default = ""
+example = "export QT_STYLE_OVERRIDE=Fusion"
+
+[knob.QT_QUICK_CONTROLS_STYLE]
+name = "QT_QUICK_CONTROLS_STYLE"
+type = "env"
+description = "Style used by Qt Quick Controls 2 apps: Default, Basic, Fusion, Material, Universal, iOS, macOS."
+default = "Default"
+example = "export QT_QUICK_CONTROLS_STYLE=Material"
+
+[knob.QT_QUICK_CONTROLS_FALLBACK_STYLE]
+name = "QT_QUICK_CONTROLS_FALLBACK_STYLE"
+type = "env"
+description = "Fallback style used if a control is not implemented in the chosen QQC2 style."
+default = "Basic"
+example = "export QT_QUICK_CONTROLS_FALLBACK_STYLE=Fusion"
+
+[knob.QT_QUICK_CONTROLS_CONF]
+name = "QT_QUICK_CONTROLS_CONF"
+type = "env"
+description = "Path to a qtquickcontrols2.conf file that customizes the QQC2 theme/colors."
+default = ""
+example = "export QT_QUICK_CONTROLS_CONF=$HOME/.config/qt6ct/qtquickcontrols2.conf"
+
+[knob.QT_QUICK_CONTROLS_MATERIAL_THEME]
+name = "QT_QUICK_CONTROLS_MATERIAL_THEME"
+type = "env"
+description = "Material style theme variant: Light, Dark, System."
+default = "Light"
+example = "export QT_QUICK_CONTROLS_MATERIAL_THEME=Dark"
+
+[knob.QT_QUICK_CONTROLS_UNIVERSAL_THEME]
+name = "QT_QUICK_CONTROLS_UNIVERSAL_THEME"
+type = "env"
+description = "Universal style theme variant: Light, Dark, System."
+default = "Light"
+example = "export QT_QUICK_CONTROLS_UNIVERSAL_THEME=Dark"
+
+[knob.QT_QPA_GENERIC_PLUGINS]
+name = "QT_QPA_GENERIC_PLUGINS"
+type = "env"
+description = "Comma-separated list of generic QPA plugins to load (e.g., evdevkeyboard, tslib)."
+default = ""
+example = "export QT_QPA_GENERIC_PLUGINS=evdevkeyboard"

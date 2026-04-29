@@ -1,0 +1,90 @@
+# Hyprland animations configuration
+# Set inside the animations { } section of hyprland.conf.
+# Source: https://wiki.hyprland.org/Configuring/Animations/
+
+[meta]
+docs = "https://wiki.hyprland.org/Configuring/Animations/"
+
+[knob.enabled]
+name = "enabled"
+type = "config"
+description = "Master switch for all animations"
+default = "true"
+example = "enabled = true"
+
+[knob.first_launch_animation]
+name = "first_launch_animation"
+type = "config"
+description = "Play the welcome fade-in animation on first start"
+default = "true"
+example = "first_launch_animation = false"
+
+[knob.bezier]
+name = "bezier"
+type = "config"
+description = "Define a named cubic bezier curve usable in animation directives. Format: bezier = NAME, x0, y0, x1, y1"
+default = ""
+example = "bezier = myBezier, 0.05, 0.9, 0.1, 1.05"
+
+[knob.animation_windows]
+name = "animation:windows"
+type = "config"
+description = "Animation for opening/closing/moving windows. Format: animation = NAME, ON_OFF, SPEED, BEZIER, [STYLE]"
+default = "1, 7, default, popin 80%"
+example = "animation = windows, 1, 7, myBezier"
+
+[knob.animation_windowsIn]
+name = "animation:windowsIn"
+type = "config"
+description = "Animation only for window open events"
+default = ""
+example = "animation = windowsIn, 1, 6, myBezier, popin 60%"
+
+[knob.animation_windowsOut]
+name = "animation:windowsOut"
+type = "config"
+description = "Animation only for window close events"
+default = ""
+example = "animation = windowsOut, 1, 5, default, popin 80%"
+
+[knob.animation_windowsMove]
+name = "animation:windowsMove"
+type = "config"
+description = "Animation for moving / dragging / resizing windows"
+default = ""
+example = "animation = windowsMove, 1, 5, default"
+
+[knob.animation_fade]
+name = "animation:fade"
+type = "config"
+description = "Master fade animation (windows, layers, dim)"
+default = "1, 7, default"
+example = "animation = fade, 1, 7, default"
+
+[knob.animation_border]
+name = "animation:border"
+type = "config"
+description = "Animation for border color transitions"
+default = "1, 10, default"
+example = "animation = border, 1, 10, default"
+
+[knob.animation_borderangle]
+name = "animation:borderangle"
+type = "config"
+description = "Animation for animated gradient border angle. Use loop style for continuous rotation."
+default = "0"
+example = "animation = borderangle, 1, 8, default, loop"
+
+[knob.animation_workspaces]
+name = "animation:workspaces"
+type = "config"
+description = "Animation when switching workspaces. Styles: slide, slidevert, fade, slidefade, slidefadevert"
+default = "1, 6, default"
+example = "animation = workspaces, 1, 6, default, slidevert"
+
+[knob.animation_specialWorkspace]
+name = "animation:specialWorkspace"
+type = "config"
+description = "Animation for the special (scratchpad) workspace"
+default = ""
+example = "animation = specialWorkspace, 1, 6, default, slidevert"

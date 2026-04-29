@@ -1,0 +1,104 @@
+# Hyprland misc configuration
+# Set inside the misc { } section of hyprland.conf.
+# Source: https://wiki.hyprland.org/Configuring/Variables/#misc
+
+[meta]
+docs = "https://wiki.hyprland.org/Configuring/Variables/#misc"
+
+[knob.disable_hyprland_logo]
+name = "disable_hyprland_logo"
+type = "config"
+description = "Hide the Hyprland logo on empty workspaces"
+default = "false"
+example = "disable_hyprland_logo = true"
+
+[knob.disable_splash_rendering]
+name = "disable_splash_rendering"
+type = "config"
+description = "Hide the version/splash text drawn on the wallpaper"
+default = "false"
+example = "disable_splash_rendering = true"
+
+[knob.force_default_wallpaper]
+name = "force_default_wallpaper"
+type = "config"
+description = "Choose the default anime wallpaper variant: -1 random, 0 none, 1-2 specific"
+default = "-1"
+example = "force_default_wallpaper = 0"
+
+[knob.vfr]
+name = "vfr"
+type = "config"
+description = "Variable frame rate: skip frames when nothing on screen changes. Big power saver."
+default = "true"
+example = "vfr = true"
+
+[knob.vrr]
+name = "vrr"
+type = "config"
+description = "Variable Refresh Rate / Adaptive Sync default. 0 off, 1 on, 2 fullscreen-only, 3 fullscreen-only fullscreen-or-game"
+default = "0"
+example = "vrr = 1"
+
+[knob.mouse_move_enables_dpms]
+name = "mouse_move_enables_dpms"
+type = "config"
+description = "Wake the displays when the mouse moves while screen is in DPMS off"
+default = "false"
+example = "mouse_move_enables_dpms = true"
+
+[knob.key_press_enables_dpms]
+name = "key_press_enables_dpms"
+type = "config"
+description = "Wake the displays on any keypress while screen is in DPMS off"
+default = "false"
+example = "key_press_enables_dpms = true"
+
+[knob.always_follow_on_dnd]
+name = "always_follow_on_dnd"
+type = "config"
+description = "Focus follows cursor during a drag-and-drop, even if follow_mouse is off"
+default = "true"
+example = "always_follow_on_dnd = true"
+
+[knob.layers_hog_keyboard_focus]
+name = "layers_hog_keyboard_focus"
+type = "config"
+description = "Allow exclusive layer surfaces (e.g. wofi, rofi) to receive keyboard focus"
+default = "true"
+example = "layers_hog_keyboard_focus = true"
+
+[knob.animate_manual_resizes]
+name = "animate_manual_resizes"
+type = "config"
+description = "Animate manual window resizes; smoother but more expensive"
+default = "false"
+example = "animate_manual_resizes = true"
+
+[knob.disable_autoreload]
+name = "disable_autoreload"
+type = "config"
+description = "Don't watch hyprland.conf for changes. Save CPU on slow systems."
+default = "false"
+example = "disable_autoreload = true"
+
+[knob.focus_on_activate]
+name = "focus_on_activate"
+type = "config"
+description = "Focus a window when it requests xdg-activation (e.g. browser link from another app)"
+default = "false"
+example = "focus_on_activate = true"
+
+[knob.middle_click_paste]
+name = "middle_click_paste"
+type = "config"
+description = "Enable PRIMARY selection (middle-click) paste between Wayland clients"
+default = "true"
+example = "middle_click_paste = false"
+
+[knob.render_ahead_of_time]
+name = "render_ahead_of_time"
+type = "config"
+description = "Render frames in advance of vblank. Lower input latency, may cause glitches."
+default = "false"
+example = "render_ahead_of_time = true"

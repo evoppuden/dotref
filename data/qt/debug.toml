@@ -1,0 +1,96 @@
+# Qt debugging, logging, and diagnostics
+# Source: https://doc.qt.io/qt-6/qloggingcategory.html, https://doc.qt.io/qt-6/debug.html
+
+[meta]
+docs = "https://doc.qt.io/qt-6/qloggingcategory.html"
+
+[knob.QT_DEBUG_PLUGINS]
+name = "QT_DEBUG_PLUGINS"
+type = "env"
+description = "Print verbose plugin loading info to stderr. Essential for diagnosing 'no Qt platform plugin' errors."
+default = "0"
+example = "export QT_DEBUG_PLUGINS=1"
+
+[knob.QT_LOGGING_RULES]
+name = "QT_LOGGING_RULES"
+type = "env"
+description = "Filter Qt logging categories. Format: '<category>=<true|false>;...'"
+default = ""
+example = "export QT_LOGGING_RULES='qt.qpa.*=true;*.debug=false'"
+
+[knob.QT_LOGGING_CONF]
+name = "QT_LOGGING_CONF"
+type = "env"
+description = "Path to a config file containing logging rules (alternative to QT_LOGGING_RULES)."
+default = ""
+example = "export QT_LOGGING_CONF=$HOME/.config/QtProject/qtlogging.ini"
+
+[knob.QT_MESSAGE_PATTERN]
+name = "QT_MESSAGE_PATTERN"
+type = "env"
+description = "Format string for log messages. Supports %{type}, %{message}, %{file}, %{line}, %{function}, %{category}, %{time}."
+default = ""
+example = "export QT_MESSAGE_PATTERN='[%{type}] %{category}: %{message}'"
+
+[knob.QT_FATAL_WARNINGS]
+name = "QT_FATAL_WARNINGS"
+type = "env"
+description = "Abort on the Nth Qt warning. Useful in CI to catch regressions."
+default = ""
+example = "export QT_FATAL_WARNINGS=1"
+
+[knob.QT_FATAL_CRITICALS]
+name = "QT_FATAL_CRITICALS"
+type = "env"
+description = "Abort on the Nth qCritical(). Set to 1 to fail fast on the first critical message."
+default = ""
+example = "export QT_FATAL_CRITICALS=1"
+
+[knob.QT_ASSUME_STDERR_HAS_CONSOLE]
+name = "QT_ASSUME_STDERR_HAS_CONSOLE"
+type = "env"
+description = "Force Qt to write log messages to stderr even when no console is detected (Windows GUI apps)."
+default = "0"
+example = "export QT_ASSUME_STDERR_HAS_CONSOLE=1"
+
+[knob.QT_LOGGING_TO_CONSOLE]
+name = "QT_LOGGING_TO_CONSOLE"
+type = "env"
+description = "Force log output to console even when journald or syslog handlers would otherwise apply."
+default = ""
+example = "export QT_LOGGING_TO_CONSOLE=1"
+
+[knob.QML_IMPORT_TRACE]
+name = "QML_IMPORT_TRACE"
+type = "env"
+description = "Trace QML import resolution. Useful for diagnosing 'module not installed' errors."
+default = "0"
+example = "export QML_IMPORT_TRACE=1"
+
+[knob.QSG_VISUALIZE]
+name = "QSG_VISUALIZE"
+type = "env"
+description = "Visual scene-graph debugger overlay: clip, overdraw, batches, changes."
+default = ""
+example = "export QSG_VISUALIZE=overdraw"
+
+[knob.QSG_INFO]
+name = "QSG_INFO"
+type = "env"
+description = "Print Qt Quick scene-graph backend info on startup (renderer, GL/Vulkan/Metal version)."
+default = "0"
+example = "export QSG_INFO=1"
+
+[knob.QT_OPENGL]
+name = "QT_OPENGL"
+type = "env"
+description = "Force a specific OpenGL backend: desktop, angle, software."
+default = ""
+example = "export QT_OPENGL=software"
+
+[knob.QSG_RHI_BACKEND]
+name = "QSG_RHI_BACKEND"
+type = "env"
+description = "Qt Quick RHI backend: opengl, vulkan, metal, d3d11, d3d12, null."
+default = ""
+example = "export QSG_RHI_BACKEND=vulkan"

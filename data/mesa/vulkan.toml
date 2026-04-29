@@ -1,0 +1,110 @@
+# Mesa Vulkan drivers (RADV / ANV / NVK / Turnip / Lavapipe)
+# Source: https://docs.mesa3d.org/envvars.html
+
+[meta]
+docs = "https://docs.mesa3d.org/envvars.html"
+
+[knob.RADV_DEBUG]
+name = "RADV_DEBUG"
+type = "env"
+description = "RADV (AMD Vulkan) debug flags, comma-separated: nofastclears, nodcc, llvm, nocache, syncshaders, allbos, info, nohiz..."
+default = ""
+example = "export RADV_DEBUG=info,nocache"
+
+[knob.RADV_PERFTEST]
+name = "RADV_PERFTEST"
+type = "env"
+description = "RADV experimental perf options: rt, gpl, sam, rtwave64, video_decode, dccmsaa, ngg_streamout..."
+default = ""
+example = "export RADV_PERFTEST=rt,gpl"
+
+[knob.RADV_FORCE_FAMILY]
+name = "RADV_FORCE_FAMILY"
+type = "env"
+description = "Force RADV to pretend it's running on a specific GPU family (debug/test only)."
+default = ""
+example = "export RADV_FORCE_FAMILY=navi21"
+
+[knob.ANV_DEBUG]
+name = "ANV_DEBUG"
+type = "env"
+description = "Intel Vulkan (Anvil) debug flags: video-decode, video-encode, sparse-trtt, video-h264enc..."
+default = ""
+example = "export ANV_DEBUG=sparse-trtt"
+
+[knob.ANV_QUEUE_THREAD_DISABLE]
+name = "ANV_QUEUE_THREAD_DISABLE"
+type = "env"
+description = "Disable the Anvil queue thread. Workaround for some scheduling issues."
+default = "false"
+example = "export ANV_QUEUE_THREAD_DISABLE=true"
+
+[knob.NVK_DEBUG]
+name = "NVK_DEBUG"
+type = "env"
+description = "NVK (Mesa NVIDIA Vulkan) debug flags. See driver docs for current set."
+default = ""
+example = "export NVK_DEBUG=push_dump"
+
+[knob.TU_DEBUG]
+name = "TU_DEBUG"
+type = "env"
+description = "Turnip (Adreno Vulkan) debug flags."
+default = ""
+example = "export TU_DEBUG=startup"
+
+[knob.LVP_DEBUG]
+name = "LVP_DEBUG"
+type = "env"
+description = "Lavapipe (CPU Vulkan via llvmpipe) debug flags."
+default = ""
+example = "export LVP_DEBUG=all_entrypoints"
+
+[knob.VK_INSTANCE_LAYERS]
+name = "VK_INSTANCE_LAYERS"
+type = "env"
+description = "Colon-separated explicit Vulkan layers to load at instance creation (e.g., VK_LAYER_KHRONOS_validation)."
+default = ""
+example = "export VK_INSTANCE_LAYERS=VK_LAYER_KHRONOS_validation"
+
+[knob.VK_LAYER_PATH]
+name = "VK_LAYER_PATH"
+type = "env"
+description = "Colon-separated extra paths searched for Vulkan layer manifests."
+default = ""
+example = "export VK_LAYER_PATH=/usr/share/vulkan/explicit_layer.d"
+
+[knob.VK_ICD_FILENAMES]
+name = "VK_ICD_FILENAMES"
+type = "env"
+description = "Force a specific Vulkan ICD JSON manifest. Useful for switching between RADV/AMDVLK or selecting NVIDIA on hybrid systems."
+default = ""
+example = "export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/radeon_icd.x86_64.json"
+
+[knob.VK_DRIVER_FILES]
+name = "VK_DRIVER_FILES"
+type = "env"
+description = "Replacement for VK_ICD_FILENAMES (Vulkan SDK 1.3.207+). Same semantics."
+default = ""
+example = "export VK_DRIVER_FILES=/usr/share/vulkan/icd.d/radeon_icd.x86_64.json"
+
+[knob.VK_LOADER_DEBUG]
+name = "VK_LOADER_DEBUG"
+type = "env"
+description = "Vulkan loader debug verbosity: error, warn, info, debug, layer, driver, all."
+default = ""
+example = "export VK_LOADER_DEBUG=all"
+
+[knob.MESA_VK_VERSION_OVERRIDE]
+name = "MESA_VK_VERSION_OVERRIDE"
+type = "env"
+description = "Override the reported Vulkan API version."
+default = ""
+example = "export MESA_VK_VERSION_OVERRIDE=1.3"
+
+[knob.MESA_VK_WSI_PRESENT_MODE]
+name = "MESA_VK_WSI_PRESENT_MODE"
+type = "env"
+description = "Force the WSI present mode: immediate, mailbox, fifo, relaxed. Equivalent of forcing vsync on/off."
+default = ""
+example = "export MESA_VK_WSI_PRESENT_MODE=mailbox"

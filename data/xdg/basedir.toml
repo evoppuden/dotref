@@ -1,0 +1,61 @@
+# XDG Base Directory Specification
+# Source: https://specifications.freedesktop.org/basedir-spec/latest/
+
+[meta]
+docs = "https://specifications.freedesktop.org/basedir-spec/latest/"
+
+[knob.XDG_CONFIG_HOME]
+name = "XDG_CONFIG_HOME"
+type = "env"
+description = "Base directory for user-specific configuration files"
+default = "$HOME/.config"
+example = "export XDG_CONFIG_HOME=\"$HOME/.config\""
+
+[knob.XDG_DATA_HOME]
+name = "XDG_DATA_HOME"
+type = "env"
+description = "Base directory for user-specific data files"
+default = "$HOME/.local/share"
+example = "export XDG_DATA_HOME=\"$HOME/.local/share\""
+
+[knob.XDG_STATE_HOME]
+name = "XDG_STATE_HOME"
+type = "env"
+description = "Base directory for user-specific state files (logs, history, recently used files)"
+default = "$HOME/.local/state"
+example = "export XDG_STATE_HOME=\"$HOME/.local/state\""
+
+[knob.XDG_CACHE_HOME]
+name = "XDG_CACHE_HOME"
+type = "env"
+description = "Base directory for user-specific non-essential (cached) data"
+default = "$HOME/.cache"
+example = "export XDG_CACHE_HOME=\"$HOME/.cache\""
+
+[knob.XDG_RUNTIME_DIR]
+name = "XDG_RUNTIME_DIR"
+type = "env"
+description = "User-specific runtime directory for sockets, named pipes; cleared at logout. Set by pam_systemd."
+default = "/run/user/$UID"
+example = "export XDG_RUNTIME_DIR=/run/user/1000"
+
+[knob.XDG_CONFIG_DIRS]
+name = "XDG_CONFIG_DIRS"
+type = "env"
+description = "Colon-separated set of preference-ordered base directories to search for configuration files (in addition to XDG_CONFIG_HOME)"
+default = "/etc/xdg"
+example = "export XDG_CONFIG_DIRS=/etc/xdg:/usr/local/etc/xdg"
+
+[knob.XDG_DATA_DIRS]
+name = "XDG_DATA_DIRS"
+type = "env"
+description = "Colon-separated set of preference-ordered base directories to search for data files (in addition to XDG_DATA_HOME)"
+default = "/usr/local/share:/usr/share"
+example = "export XDG_DATA_DIRS=/usr/local/share:/usr/share"
+
+[knob.XDG_BIN_HOME]
+name = "XDG_BIN_HOME"
+type = "env"
+description = "Informal/de-facto base directory for user-specific executable files. Not in spec but widely used; add to PATH."
+default = "$HOME/.local/bin"
+example = "export PATH=\"$HOME/.local/bin:$PATH\""

@@ -1,0 +1,208 @@
+# systemd [Service] section directives
+# Source: man systemd.service, man systemd.exec
+
+[meta]
+docs = "https://www.freedesktop.org/software/systemd/man/latest/systemd.service.html"
+
+[knob.Type]
+name = "Type"
+type = "config"
+description = "Process startup model: simple, exec, forking, oneshot, dbus, notify, notify-reload, idle"
+default = "simple"
+example = "Type=notify"
+
+[knob.ExecStart]
+name = "ExecStart"
+type = "config"
+description = "Command line(s) to start the service. Multiple lines run sequentially for Type=oneshot."
+default = ""
+example = "ExecStart=/usr/bin/myapp --foreground"
+
+[knob.ExecStartPre]
+name = "ExecStartPre"
+type = "config"
+description = "Commands run before ExecStart. Failure aborts startup. Prefix with '-' to ignore failures."
+default = ""
+example = "ExecStartPre=/usr/bin/install -d -m700 /run/myapp"
+
+[knob.ExecStartPost]
+name = "ExecStartPost"
+type = "config"
+description = "Commands run after the service has started"
+default = ""
+example = "ExecStartPost=/usr/bin/curl -fsS http://localhost/health"
+
+[knob.ExecStop]
+name = "ExecStop"
+type = "config"
+description = "Command to gracefully stop the service before SIGTERM is delivered"
+default = ""
+example = "ExecStop=/usr/bin/myapp stop"
+
+[knob.ExecReload]
+name = "ExecReload"
+type = "config"
+description = "Command to reload the service ('systemctl reload')"
+default = ""
+example = "ExecReload=/bin/kill -HUP $MAINPID"
+
+[knob.Restart]
+name = "Restart"
+type = "config"
+description = "When to auto-restart: no, on-success, on-failure, on-abnormal, on-watchdog, on-abort, always"
+default = "no"
+example = "Restart=on-failure"
+
+[knob.RestartSec]
+name = "RestartSec"
+type = "config"
+description = "Time to wait before restarting (e.g. 1s, 500ms, 1min)"
+default = "100ms"
+example = "RestartSec=5s"
+
+[knob.TimeoutStartSec]
+name = "TimeoutStartSec"
+type = "config"
+description = "How long to wait for the service to declare itself started before it's killed"
+default = "DefaultTimeoutStartSec (90s)"
+example = "TimeoutStartSec=2min"
+
+[knob.TimeoutStopSec]
+name = "TimeoutStopSec"
+type = "config"
+description = "Grace period after SIGTERM before SIGKILL"
+default = "DefaultTimeoutStopSec (90s)"
+example = "TimeoutStopSec=30s"
+
+[knob.WatchdogSec]
+name = "WatchdogSec"
+type = "config"
+description = "Watchdog interval. Service must call sd_notify(WATCHDOG=1) within this time or it is killed (and restarted, with Restart=on-watchdog)."
+default = "0 (disabled)"
+example = "WatchdogSec=30s"
+
+[knob.User]
+name = "User"
+type = "config"
+description = "UNIX user to run the service as"
+default = "root"
+example = "User=myapp"
+
+[knob.Group]
+name = "Group"
+type = "config"
+description = "UNIX primary group to run the service as"
+default = ""
+example = "Group=myapp"
+
+[knob.DynamicUser]
+name = "DynamicUser"
+type = "config"
+description = "Allocate an ephemeral UID/GID just for this service. Forces several hardening options on automatically."
+default = "no"
+example = "DynamicUser=yes"
+
+[knob.WorkingDirectory]
+name = "WorkingDirectory"
+type = "config"
+description = "Working directory for the started process. Use '~' for the user's home."
+default = "/"
+example = "WorkingDirectory=/var/lib/myapp"
+
+[knob.Environment]
+name = "Environment"
+type = "config"
+description = "Set environment variable(s) for the service"
+default = ""
+example = "Environment=NODE_ENV=production PORT=8080"
+
+[knob.EnvironmentFile]
+name = "EnvironmentFile"
+type = "config"
+description = "Read VAR=value pairs from a file. Prefix with '-' to ignore missing files."
+default = ""
+example = "EnvironmentFile=-/etc/default/myapp"
+
+[knob.RuntimeDirectory]
+name = "RuntimeDirectory"
+type = "config"
+description = "Create /run/<name> owned by User=/Group=, exposed as $RUNTIME_DIRECTORY. Cleaned up on stop."
+default = ""
+example = "RuntimeDirectory=myapp"
+
+[knob.StateDirectory]
+name = "StateDirectory"
+type = "config"
+description = "Create /var/lib/<name> for persistent state, exposed as $STATE_DIRECTORY"
+default = ""
+example = "StateDirectory=myapp"
+
+[knob.LogsDirectory]
+name = "LogsDirectory"
+type = "config"
+description = "Create /var/log/<name> for the service's log files"
+default = ""
+example = "LogsDirectory=myapp"
+
+[knob.PrivateTmp]
+name = "PrivateTmp"
+type = "config"
+description = "Give the service a private /tmp and /var/tmp. Cheap, valuable hardening."
+default = "no"
+example = "PrivateTmp=yes"
+
+[knob.ProtectSystem]
+name = "ProtectSystem"
+type = "config"
+description = "Mount the system read-only for the service. Values: no, yes, full, strict"
+default = "no"
+example = "ProtectSystem=strict"
+
+[knob.ProtectHome]
+name = "ProtectHome"
+type = "config"
+description = "Hide /home, /root, /run/user from the service. Values: no, read-only, tmpfs, yes"
+default = "no"
+example = "ProtectHome=yes"
+
+[knob.NoNewPrivileges]
+name = "NoNewPrivileges"
+type = "config"
+description = "Prevent gaining privileges via setuid/setgid/file capabilities. Required by some other hardening options."
+default = "no"
+example = "NoNewPrivileges=yes"
+
+[knob.CapabilityBoundingSet]
+name = "CapabilityBoundingSet"
+type = "config"
+description = "Whitelist of Linux capabilities. Prefix with '~' to drop instead. Empty = drop all."
+default = ""
+example = "CapabilityBoundingSet=CAP_NET_BIND_SERVICE"
+
+[knob.SystemCallFilter]
+name = "SystemCallFilter"
+type = "config"
+description = "seccomp syscall allowlist/denylist. Use named groups like @system-service to reduce churn."
+default = ""
+example = "SystemCallFilter=@system-service"
+
+[knob.MemoryMax]
+name = "MemoryMax"
+type = "config"
+description = "Hard memory limit (cgroup memory.max). Process is OOM-killed if exceeded."
+default = "infinity"
+example = "MemoryMax=512M"
+
+[knob.CPUQuota]
+name = "CPUQuota"
+type = "config"
+description = "CPU time as a percentage of one core; >100% allows multiple cores"
+default = ""
+example = "CPUQuota=50%"
+
+[knob.TasksMax]
+name = "TasksMax"
+type = "config"
+description = "Maximum number of tasks (threads + processes) in the cgroup"
+default = "DefaultTasksMax"
+example = "TasksMax=512"

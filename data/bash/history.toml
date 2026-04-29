@@ -1,0 +1,96 @@
+# Bash history parameters and shopts
+# Source: man bash (PARAMETERS, SHELL BUILTIN COMMANDS — shopt)
+
+[meta]
+docs = "https://www.gnu.org/software/bash/manual/html_node/Bash-History-Facilities.html"
+
+[knob.HISTFILE]
+name = "HISTFILE"
+type = "parameter"
+description = "Path to the history file. Set to empty to disable persistent history."
+default = "~/.bash_history"
+example = "HISTFILE=~/.bash_history"
+
+[knob.HISTSIZE]
+name = "HISTSIZE"
+type = "parameter"
+description = "Max number of commands kept in memory during the session."
+default = "500"
+example = "HISTSIZE=10000"
+
+[knob.HISTFILESIZE]
+name = "HISTFILESIZE"
+type = "parameter"
+description = "Max number of lines retained in HISTFILE; truncated on shell exit."
+default = "500"
+example = "HISTFILESIZE=20000"
+
+[knob.HISTCONTROL]
+name = "HISTCONTROL"
+type = "parameter"
+description = "Colon-separated list of options: ignorespace, ignoredups, ignoreboth, erasedups."
+default = ""
+example = "HISTCONTROL=ignoreboth:erasedups"
+
+[knob.HISTIGNORE]
+name = "HISTIGNORE"
+type = "parameter"
+description = "Colon-separated patterns of commands to skip from history."
+default = ""
+example = "HISTIGNORE='ls:ll:cd:pwd:exit:history'"
+
+[knob.HISTTIMEFORMAT]
+name = "HISTTIMEFORMAT"
+type = "parameter"
+description = "strftime format string prefixed to each history entry on display."
+default = ""
+example = "HISTTIMEFORMAT='%F %T '"
+
+[knob.HISTCMD]
+name = "HISTCMD"
+type = "parameter"
+description = "History number, or index in the history list, of the current command."
+default = ""
+example = "echo $HISTCMD"
+
+[knob.FCEDIT]
+name = "FCEDIT"
+type = "parameter"
+description = "Default editor used by the `fc -e` builtin."
+default = ""
+example = "FCEDIT=nvim"
+
+[knob.histappend]
+name = "histappend"
+type = "shopt"
+description = "Append to HISTFILE on shell exit instead of overwriting. Essential for multi-shell setups."
+default = "off"
+example = "shopt -s histappend"
+
+[knob.cmdhist]
+name = "cmdhist"
+type = "shopt"
+description = "Save multi-line commands as a single history entry."
+default = "on"
+example = "shopt -s cmdhist"
+
+[knob.lithist]
+name = "lithist"
+type = "shopt"
+description = "With cmdhist, preserve embedded newlines in multi-line history entries."
+default = "off"
+example = "shopt -s lithist"
+
+[knob.histreedit]
+name = "histreedit"
+type = "shopt"
+description = "If a history substitution fails, drop the user back into the line editor to fix it."
+default = "off"
+example = "shopt -s histreedit"
+
+[knob.histverify]
+name = "histverify"
+type = "shopt"
+description = "Show the result of history substitution for editing before executing."
+default = "off"
+example = "shopt -s histverify"

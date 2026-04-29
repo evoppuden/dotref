@@ -1,0 +1,97 @@
+# Hyprland keybindings
+# Top-level bind* directives, plus settings in the binds { } section.
+# Source: https://wiki.hyprland.org/Configuring/Binds/
+
+[meta]
+docs = "https://wiki.hyprland.org/Configuring/Binds/"
+
+[knob.bind]
+name = "bind"
+type = "config"
+description = "Standard keybind, fires on key press. Format: bind = MODS, KEY, DISPATCHER, ARGS"
+default = ""
+example = "bind = SUPER, Q, exec, kitty"
+
+[knob.bindr]
+name = "bindr"
+type = "config"
+description = "Bind that fires on key release"
+default = ""
+example = "bindr = SUPER, SUPER_L, exec, wofi --show drun"
+
+[knob.binde]
+name = "binde"
+type = "config"
+description = "Bind that repeats while held (e.g. for volume control)"
+default = ""
+example = "binde = , XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+
+[knob.bindl]
+name = "bindl"
+type = "config"
+description = "Bind that works even on the lock screen"
+default = ""
+example = "bindl = , XF86AudioPlay, exec, playerctl play-pause"
+
+[knob.bindm]
+name = "bindm"
+type = "config"
+description = "Bind a mouse button. Used for movewindow / resizewindow with the cursor."
+default = ""
+example = "bindm = SUPER, mouse:272, movewindow"
+
+[knob.bindt]
+name = "bindt"
+type = "config"
+description = "Transparent bind: passes the key through to the focused client after firing"
+default = ""
+example = "bindt = SUPER, T, exec, notify-send 'tagged'"
+
+[knob.bindn]
+name = "bindn"
+type = "config"
+description = "Non-consuming bind: fires AND lets the key reach the client"
+default = ""
+example = "bindn = , Caps_Lock, exec, notify-send 'caps'"
+
+[knob.bind_flags]
+name = "bind (flags)"
+type = "config"
+description = "Combined flags via 'bindflags=lremn...'. l=lock, r=release, e=repeat, m=mouse, n=non-consuming, t=transparent, i=ignore mods, s=separator, d=description, p=no-press"
+default = ""
+example = "bindle = , XF86MonBrightnessUp, exec, brightnessctl s 5%+"
+
+[knob.unbind]
+name = "unbind"
+type = "config"
+description = "Remove a previously declared bind. Useful in modal submap setups."
+default = ""
+example = "unbind = SUPER, Q"
+
+[knob.workspace_back_and_forth]
+name = "workspace_back_and_forth"
+type = "config"
+description = "Pressing the same workspace key twice returns to the previous workspace"
+default = "false"
+example = "workspace_back_and_forth = true"
+
+[knob.allow_workspace_cycles]
+name = "allow_workspace_cycles"
+type = "config"
+description = "Allow 'workspace, previous' to chain across multiple jumps"
+default = "false"
+example = "allow_workspace_cycles = true"
+
+[knob.scroll_event_delay]
+name = "scroll_event_delay"
+type = "config"
+description = "Throttle for scroll-bound dispatchers (workspace switching by scroll), in ms"
+default = "300"
+example = "scroll_event_delay = 0"
+
+[knob.pass_mouse_when_bound]
+name = "pass_mouse_when_bound"
+type = "config"
+description = "Whether bindm should also pass the click to the underlying surface"
+default = "false"
+example = "pass_mouse_when_bound = true"

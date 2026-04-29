@@ -1,0 +1,117 @@
+# systemd-journald configuration and journalctl env vars
+# Source: man journald.conf, man journalctl
+
+[meta]
+docs = "https://www.freedesktop.org/software/systemd/man/latest/journald.conf.html"
+
+[knob.Storage]
+name = "Storage"
+type = "config"
+description = "Where the journal is kept: volatile (RAM only), persistent (/var/log/journal), auto, none"
+default = "auto"
+example = "Storage=persistent"
+
+[knob.Compress]
+name = "Compress"
+type = "config"
+description = "Compress journal entries above 512 bytes. Accepts yes/no or a size threshold."
+default = "yes"
+example = "Compress=yes"
+
+[knob.Seal]
+name = "Seal"
+type = "config"
+description = "Cryptographically seal journal files using forward-secure sealing. Requires journalctl --setup-keys."
+default = "yes"
+example = "Seal=yes"
+
+[knob.SystemMaxUse]
+name = "SystemMaxUse"
+type = "config"
+description = "Max disk space for the persistent journal under /var/log/journal"
+default = "(10% of FS, capped at 4G)"
+example = "SystemMaxUse=1G"
+
+[knob.SystemKeepFree]
+name = "SystemKeepFree"
+type = "config"
+description = "Keep at least this much free space on the FS holding the persistent journal"
+default = "(15% of FS, capped at 4G)"
+example = "SystemKeepFree=2G"
+
+[knob.SystemMaxFileSize]
+name = "SystemMaxFileSize"
+type = "config"
+description = "Max size of an individual journal file before rotation"
+default = "(SystemMaxUse / 8)"
+example = "SystemMaxFileSize=128M"
+
+[knob.MaxRetentionSec]
+name = "MaxRetentionSec"
+type = "config"
+description = "Max age of journal entries; older ones are deleted"
+default = "0 (no limit)"
+example = "MaxRetentionSec=1month"
+
+[knob.RuntimeMaxUse]
+name = "RuntimeMaxUse"
+type = "config"
+description = "Same as SystemMaxUse but for the volatile (RAM) journal in /run/log/journal"
+default = "(10% of /run, capped at 1G)"
+example = "RuntimeMaxUse=64M"
+
+[knob.ForwardToSyslog]
+name = "ForwardToSyslog"
+type = "config"
+description = "Forward log entries to a classic syslog daemon"
+default = "no"
+example = "ForwardToSyslog=yes"
+
+[knob.ForwardToKMsg]
+name = "ForwardToKMsg"
+type = "config"
+description = "Forward log entries to the kernel ring buffer"
+default = "no"
+example = "ForwardToKMsg=yes"
+
+[knob.ForwardToConsole]
+name = "ForwardToConsole"
+type = "config"
+description = "Forward log entries to the system console"
+default = "no"
+example = "ForwardToConsole=yes"
+
+[knob.MaxLevelStore]
+name = "MaxLevelStore"
+type = "config"
+description = "Max log priority kept on disk (emerg..debug)"
+default = "debug"
+example = "MaxLevelStore=info"
+
+[knob.RateLimitIntervalSec]
+name = "RateLimitIntervalSec"
+type = "config"
+description = "Rate limiting window per service. Set to 0 to disable rate limiting."
+default = "30s"
+example = "RateLimitIntervalSec=0"
+
+[knob.RateLimitBurst]
+name = "RateLimitBurst"
+type = "config"
+description = "Max number of messages per service within RateLimitIntervalSec"
+default = "10000"
+example = "RateLimitBurst=20000"
+
+[knob.SYSTEMD_JOURNAL_DISABLE_LZ4]
+name = "SYSTEMD_JOURNAL_DISABLE_LZ4"
+type = "env"
+description = "Disable LZ4 decoding in journal readers; useful when reading journals from a different system"
+default = ""
+example = "export SYSTEMD_JOURNAL_DISABLE_LZ4=1"
+
+[knob.SYSTEMD_JOURNAL_KEEP_FREE]
+name = "SYSTEMD_JOURNAL_KEEP_FREE"
+type = "env"
+description = "Override SystemKeepFree at runtime for journalctl --vacuum-* operations"
+default = ""
+example = "export SYSTEMD_JOURNAL_KEEP_FREE=2G"

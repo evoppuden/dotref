@@ -1,0 +1,159 @@
+# Environment variables read by systemd and its tools (systemctl, journalctl, ...)
+# Source: man systemd, man systemctl, man journalctl
+
+[meta]
+docs = "https://www.freedesktop.org/software/systemd/man/latest/systemd.exec.html#%24XDG_RUNTIME_DIR"
+
+[knob.SYSTEMD_PAGER]
+name = "SYSTEMD_PAGER"
+type = "env"
+description = "Pager used by systemctl/journalctl. Overrides PAGER. Set to 'cat' or empty to disable."
+default = "less"
+example = "export SYSTEMD_PAGER=cat"
+
+[knob.SYSTEMD_LESS]
+name = "SYSTEMD_LESS"
+type = "env"
+description = "Flags passed to less by systemd tools. Overrides LESS for systemd only."
+default = "FRSXMK"
+example = "export SYSTEMD_LESS=FRXMK"
+
+[knob.SYSTEMD_PAGERSECURE]
+name = "SYSTEMD_PAGERSECURE"
+type = "env"
+description = "Force secure mode in the pager (LESSSECURE=1). Auto-on under sudo."
+default = ""
+example = "export SYSTEMD_PAGERSECURE=true"
+
+[knob.SYSTEMD_COLORS]
+name = "SYSTEMD_COLORS"
+type = "env"
+description = "Force color output on/off for systemd tools, regardless of TTY detection"
+default = "(auto)"
+example = "export SYSTEMD_COLORS=0"
+
+[knob.SYSTEMD_LOG_LEVEL]
+name = "SYSTEMD_LOG_LEVEL"
+type = "env"
+description = "Log verbosity of systemd daemons. Values: emerg, alert, crit, err, warning, notice, info, debug"
+default = "info"
+example = "export SYSTEMD_LOG_LEVEL=debug"
+
+[knob.SYSTEMD_LOG_TARGET]
+name = "SYSTEMD_LOG_TARGET"
+type = "env"
+description = "Where systemd writes its own log: console, journal, kmsg, journal-or-kmsg, null, auto"
+default = "journal-or-kmsg"
+example = "export SYSTEMD_LOG_TARGET=console"
+
+[knob.SYSTEMD_LOG_COLOR]
+name = "SYSTEMD_LOG_COLOR"
+type = "env"
+description = "Colorize systemd's own log output"
+default = "(auto)"
+example = "export SYSTEMD_LOG_COLOR=0"
+
+[knob.SYSTEMD_LOG_TIME]
+name = "SYSTEMD_LOG_TIME"
+type = "env"
+description = "Prefix systemd log lines with a timestamp"
+default = "0"
+example = "export SYSTEMD_LOG_TIME=1"
+
+[knob.SYSTEMD_EDITOR]
+name = "SYSTEMD_EDITOR"
+type = "env"
+description = "Editor used by 'systemctl edit'. Overrides EDITOR/VISUAL."
+default = "(EDITOR or VISUAL)"
+example = "export SYSTEMD_EDITOR=nvim"
+
+[knob.SYSTEMD_TIME_FORMAT]
+name = "SYSTEMD_TIME_FORMAT"
+type = "env"
+description = "Output format for timestamps. Values: pretty, us, utc, us+utc, unix"
+default = "pretty"
+example = "export SYSTEMD_TIME_FORMAT=unix"
+
+[knob.SYSTEMD_URLIFY]
+name = "SYSTEMD_URLIFY"
+type = "env"
+description = "Emit OSC-8 hyperlinks in supported terminals"
+default = "(auto)"
+example = "export SYSTEMD_URLIFY=0"
+
+[knob.SYSTEMD_OFFLINE]
+name = "SYSTEMD_OFFLINE"
+type = "env"
+description = "Pretend the manager is offline; useful inside chroots and image build scripts"
+default = "0"
+example = "export SYSTEMD_OFFLINE=1"
+
+[knob.RUNTIME_DIRECTORY]
+name = "RUNTIME_DIRECTORY"
+type = "env"
+description = "Set inside services that declare RuntimeDirectory=. Points to the unit's runtime dir under /run."
+default = "(set by systemd)"
+example = "echo $RUNTIME_DIRECTORY"
+
+[knob.STATE_DIRECTORY]
+name = "STATE_DIRECTORY"
+type = "env"
+description = "Set inside services that declare StateDirectory=. Points to the unit's state dir under /var/lib."
+default = "(set by systemd)"
+example = "echo $STATE_DIRECTORY"
+
+[knob.CACHE_DIRECTORY]
+name = "CACHE_DIRECTORY"
+type = "env"
+description = "Set inside services that declare CacheDirectory=. Points to the unit's cache dir under /var/cache."
+default = "(set by systemd)"
+example = "echo $CACHE_DIRECTORY"
+
+[knob.LOGS_DIRECTORY]
+name = "LOGS_DIRECTORY"
+type = "env"
+description = "Set inside services that declare LogsDirectory=. Points to the unit's log dir under /var/log."
+default = "(set by systemd)"
+example = "echo $LOGS_DIRECTORY"
+
+[knob.CONFIGURATION_DIRECTORY]
+name = "CONFIGURATION_DIRECTORY"
+type = "env"
+description = "Set inside services that declare ConfigurationDirectory=. Points to the unit's config dir under /etc."
+default = "(set by systemd)"
+example = "echo $CONFIGURATION_DIRECTORY"
+
+[knob.INVOCATION_ID]
+name = "INVOCATION_ID"
+type = "env"
+description = "128-bit ID identifying this exact invocation of a unit. Use it as a correlation key in logs."
+default = "(set by systemd)"
+example = "echo $INVOCATION_ID"
+
+[knob.JOURNAL_STREAM]
+name = "JOURNAL_STREAM"
+type = "env"
+description = "Device:inode pair indicating that stdout/stderr is connected directly to the journal. Used by libraries to enable structured logging."
+default = "(set by systemd)"
+example = "test -n \"$JOURNAL_STREAM\" && echo 'logging to journal'"
+
+[knob.MANAGERPID]
+name = "MANAGERPID"
+type = "env"
+description = "PID of the systemd --user manager. Set inside user services."
+default = "(set by systemd --user)"
+example = "echo $MANAGERPID"
+
+[knob.LISTEN_FDS]
+name = "LISTEN_FDS"
+type = "env"
+description = "Number of file descriptors passed for socket activation. Used with sd_listen_fds(3)."
+default = "(set by systemd)"
+example = "echo $LISTEN_FDS"
+
+[knob.NOTIFY_SOCKET]
+name = "NOTIFY_SOCKET"
+type = "env"
+description = "Path to the socket where services send sd_notify() readiness/status messages"
+default = "(set by systemd)"
+example = "echo $NOTIFY_SOCKET"

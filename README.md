@@ -7,7 +7,7 @@
 *A community-maintained, tldr-style lookup for Linux environment variables,
 shell parameters, and setopts — for GTK, ZSH, XDG, Qt, Wayland and more.*
 
-[![Version](https://img.shields.io/badge/version-v0.1.0-blue?style=flat-square)](https://github.com/evoppuden/dotref/releases/tag/Latest)
+[![Version](https://img.shields.io/badge/version-v0.2.0-blue?style=flat-square)](https://github.com/evoppuden/dotref/releases/tag/Latest)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen?style=flat-square)](https://github.com/evoppuden/dotref/graphs/contributors)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)](https://github.com/evoppuden/dotref/graphs/contributors)
@@ -18,14 +18,18 @@ shell parameters, and setopts — for GTK, ZSH, XDG, Qt, Wayland and more.*
 
 ## 📦 Installation
 
-**Requirements:** `python3` · `python-pipx`
+**Requirements:** `python3` (≥3.10) · `python-pipx` · *optional:* [`fzf`](https://github.com/junegunn/fzf) for the interactive picker
 
 ```bash
 git clone https://github.com/evoppuden/dotref
 cd dotref
 pipx install -e .
-mkdir -p ~/.dotref/data
-cp -r data/* ~/.dotref/data/
+```
+
+The first run of `dotref` seeds `~/.dotref/data` from the bundled database automatically — no manual `cp` step. To pull a fresh copy from the official repo any time:
+
+```bash
+dotref update
 ```
 
 ---
@@ -33,205 +37,116 @@ cp -r data/* ~/.dotref/data/
 ## 💡 Usage
 
 ```bash
-dotref list                  # list all available subsystems
-
-dotref show zsh              # list all categories for zsh
-dotref show zsh history      # show zsh history knobs
-
-dotref show gtk              # list all categories for gtk
-dotref show gtk environment  # show gtk environment variables
-
-dotref search theme          # search by keyword across all subsystems
-dotref search gtk            # search by keyword across all subsystems
+dotref                          # interactive fzf picker (if fzf is installed)
+dotref list                     # list all available subsystems
+dotref <subsystem>              # list categories for a subsystem
+dotref <subsystem> <category>   # show all knobs in a category
+dotref search <keyword>         # search across every subsystem
+dotref pick                     # explicit picker invocation
+dotref version
 ```
 
----
+Colors auto-enable on a TTY. Override with `NO_COLOR=1` or `FORCE_COLOR=1`. Override the data directory with `--data-dir <path>` — useful when iterating on data inside a checkout (`python3 dotref.py --data-dir ./data zsh history`).
 
-## ✍️ Next Steps
-
-The most valuable thing you can do right now is contribute a .toml file for a subsystem you know well — XDG, Qt, Wayland, Bash, SDL, Mesa, or anything else. You don't need to know Python. Just copy the format from an existing file in data/, fill it in, and open a PR.
-
-The dream is a community-maintained reference that covers everything — the kind of tool you reach for before opening a browser.
-
-Improvements on the list
-- [ ] `dotref update` Support for auto pull /data from the latest repo to ~/.dotref/data
-- [ ] `<subsystem>` Replaced with `<app>` or `<package>`. Let's keep it simple :)
-- [ ] `dotref show <subsystem>` replaced with `dotref <subsystem>`
-- [ ] DotrefDB installation in ~/.dotref/data included in `pipx install -e .`
-
----
-## 🤔 The Problem
-
-You're setting up a minimal Wayland compositor. You vaguely remember there's an env var that forces Qt apps to use Wayland. So you open a browser, dig through the Arch Wiki, scroll past three unrelated sections, and finally find `QT_QPA_PLATFORM=wayland` buried in a paragraph.
-
-**This happens constantly.** There is no tool that answers:
-
-- *what env vars does GTK accept?*
-- *what setopts does ZSH have for history?*
-- *how do I configure Qt scaling?*
-
-`man` pages are exhaustive but slow to navigate. `tldr` covers commands beautifully — but nothing covers **configuration knobs**: the env vars, shell parameters, and setopts that change how apps *behave*.
-
-**`dotref` is that missing tool.**
-
----
-
-## 💡 Proposed Usage
+### Examples
 
 ```bash
-# List all variables for a subsystem
-dotref zsh
-dotref gtk
-dotref xdg
-dotref qt
-dotref wayland
-
-# Browse by category
-dotref zsh history
-dotref zsh completion
-dotref gtk theming
-
-# Search across all subsystems
-dotref search HIST
-dotref search theme
-dotref search wayland
-
-# Show a specific variable
-dotref zsh HISTFILE
-dotref gtk GTK_THEME
+dotref zsh                      # list zsh categories
+dotref zsh history              # show all zsh history knobs
+dotref gtk environment          # show GTK env vars
+dotref hyprland input           # Hyprland input config directives
+dotref search theme             # find every knob mentioning "theme"
+dotref search XDG               # find every XDG_* knob
 ```
 
 ---
 
-## 📟 Example Output
+## 📟 Example output
 
 ### `dotref zsh history`
 
 ```
-📖 ZSH › History
+# zsh - history
+========================================
 
-  Controls how zsh records and replays command history.
-  Docs: https://zsh.sourceforge.io/Doc/Release/Parameters.html
+  HISTFILE  (parameter)
+    Path to the file where history is persisted across sessions.
+    default: ~/.zsh_history
+    example: HISTFILE=~/.zsh_history
 
-──────────────────────────────────────────────────────────────
+  HISTSIZE  (parameter)
+    Max number of events kept in memory during a session.
+    default: 10000
 
-  HISTFILE=~/.zsh_history
-  Path to the file where history is persisted across sessions.
+  HIST_IGNORE_DUPS  (setopt)
+    Don't record a command if identical to the previous one.
+    example: setopt HIST_IGNORE_DUPS
 
-  HISTSIZE=10000
-  Max number of events kept in memory during a session.
-
-  SAVEHIST=10000
-  Max events written to HISTFILE on exit. Should be <= HISTSIZE.
-
-  setopt HIST_IGNORE_DUPS
-  Don't record a command if identical to the previous one.
-
-  setopt HIST_IGNORE_SPACE
-  Commands prefixed with a space are not saved. Useful for secrets.
-
-  setopt HIST_VERIFY
-  Show the expanded history command before executing it.
-
-  setopt SHARE_HISTORY
-  Share history in real time across all open zsh sessions.
+  SHARE_HISTORY  (setopt)
+    Share history in real time across all open zsh sessions.
+    example: setopt SHARE_HISTORY
 ```
 
-### `dotref gtk`
-
-```
-📖 GTK › Environment Variables
-
-  Docs: https://docs.gtk.org/gtk3/running.html
-
-──────────────────────────────────────────────────────────────
-
-  GTK_THEME=Adwaita
-  Force a specific GTK theme. Append :dark or :light for variant.
-  Example: GTK_THEME=Adwaita:dark
-
-  GTK_DEBUG=interactive
-  Launch the GTK inspector alongside the app.
-  Values: actions, builder, geometry, icontheme, interactive,
-          keybindings, modules, printing, size-request, text, tree
-
-  GTK_PATH=/usr/lib/gtk-3.0
-  Extra directories to search for GTK modules and backends.
-
-  GTK_IM_MODULE=cedilla
-  Override the input method module.
-
-  GTK_OVERLAY_SCROLLING=0
-  Disable overlay (auto-hide) scrollbars. GTK3 only, removed in GTK4.
-
-  GDK_BACKEND=wayland,x11,*
-  Force a specific GDK rendering backend.
-  Values: wayland, x11, broadway
-```
+The `(parameter)`, `(setopt)`, `(env)`, `(config)` tags are color-coded in a TTY so types are scannable at a glance.
 
 ---
 
-## 📦 Proposed Subsystems
+## 📦 Subsystems
 
-| Subsystem | Description | Source |
-|-----------|-------------|--------|
-| `xdg` | Base directories, user dirs, portals | freedesktop.org spec |
-| `zsh` | Parameters, setopts, completion | man zshparam, man zshoptions |
-| `bash` | Variables, shopts | man bash |
-| `gtk` / `gdk` | Theming, rendering, debug | docs.gtk.org |
-| `qt` | Platform, scaling, theming | doc.qt.io |
-| `wayland` | Compositor, backend, display | wayland.freedesktop.org |
-| `x11` | Display, rendering, input | x.org |
-| `sdl` | Video, audio, input hints | wiki.libsdl.org |
-| `mesa` | GPU drivers, rendering | docs.mesa3d.org |
-| `nvidia` | Driver-specific vars | NVIDIA docs |
-| `dbus` | Session bus, activation | dbus.freedesktop.org |
-| `locale` | Language, encoding, formats | man locale |
-| `color` | NO_COLOR, COLORTERM, color scheme | no-color.org |
-| `cursor` | Theme, size | XCURSOR_* vars |
+| Subsystem | Status | Description | Source |
+|-----------|--------|-------------|--------|
+| `xdg` | ✅ shipped | Base directories, user dirs, session vars | freedesktop.org spec |
+| `zsh` | ✅ shipped | Parameters, setopts (history) | `man zshparam`, `man zshoptions` |
+| `gtk` | ✅ shipped | Theming, rendering, debug env | docs.gtk.org |
+| `hyprland` | ✅ shipped | input, monitors, decoration, animations, binds | wiki.hyprland.org |
+| `systemd` | ✅ shipped | unit, service, journal, environment | `man systemd.unit`, `man systemd.service` |
+| `uwsm` | ✅ shipped | Wayland session env, finalize vars | `man uwsm` |
+| `bash` | 🟡 planned | Parameters, shopts, prompt, history | `man bash` |
+| `qt` | 🟡 planned | Platform, scaling, theming | doc.qt.io |
+| `mesa` | 🟡 planned | GPU drivers, GLSL, Vulkan | docs.mesa3d.org |
+| `wayland` | 🟡 planned | Compositor, backend, display | wayland.freedesktop.org |
+| `nvidia` | 🟡 planned | Driver-specific vars | NVIDIA docs |
+| `x11` | 🟡 planned | Display, rendering, input | x.org |
+| `dbus` | 🟡 planned | Session bus, activation | dbus.freedesktop.org |
+| `locale` | 🟡 planned | Language, encoding, formats | `man locale` |
+| `color` | 🟡 planned | NO_COLOR, COLORTERM | no-color.org |
+
+🟡 **planned** = wanted, not yet contributed. PRs welcome.
 
 ---
 
-## 🗂️ Proposed Data Format
+## 🗂️ Data format
 
-Each subsystem is a plain `.toml` file in `data/<subsystem>/`. Simple to edit, easy to diff, and easy to contribute without knowing how to code.
+Each subsystem lives in `data/<subsystem>/`, with one TOML file per category. Every knob is a `[knob.<id>]` table.
 
 ```toml
 # data/zsh/history.toml
+# Source: https://zsh.sourceforge.io/Doc/Release/Parameters.html
 
-[meta]
-subsystem = "zsh"
-category  = "history"
-docs      = "https://zsh.sourceforge.io/Doc/Release/Parameters.html"
-
-[[entry]]
-type        = "parameter"
-key         = "HISTFILE"
-default     = "~/.zsh_history"
+[knob.HISTFILE]
+name = "HISTFILE"
+type = "parameter"
 description = "Path to the file where history is persisted across sessions."
+default = "~/.zsh_history"
+example = "HISTFILE=~/.zsh_history"
 
-[[entry]]
-type        = "parameter"
-key         = "HISTSIZE"
-default     = "1000"
-description = "Max number of events kept in memory during a session."
-
-[[entry]]
-type        = "parameter"
-key         = "SAVEHIST"
-default     = "1000"
-description = "Max events written to HISTFILE on exit. Should be <= HISTSIZE."
-
-[[entry]]
-type        = "setopt"
-key         = "HIST_IGNORE_DUPS"
+[knob.HIST_IGNORE_DUPS]
+name = "HIST_IGNORE_DUPS"
+type = "setopt"
 description = "Don't record a command if identical to the previous one."
-
-[[entry]]
-type        = "setopt"
-key         = "HIST_IGNORE_SPACE"
-description = "Commands prefixed with a space are not saved. Useful for secrets."
+example = "setopt HIST_IGNORE_DUPS"
 ```
+
+### Conventions
+
+- **Source comment at top.** First line(s) of every file should cite the upstream doc you sourced from (`# Source: …`).
+- **The table key (`HISTFILE` here) is just an internal identifier — only `name` is displayed.** Use a safe identifier when the displayed name has spaces or punctuation:
+  ```toml
+  [knob.touchpad_natural_scroll]
+  name = "touchpad:natural_scroll"
+  ```
+- **Strip the file's section name from `name`.** A knob in `hyprland/input.toml` should be `kb_layout`, not `input:kb_layout` — the file already conveys "input". *Do* keep sub-section nesting that conveys real structure: `touchpad:natural_scroll`, `blur:enabled`, `[Install] WantedBy`.
+- **`type` is required.** It controls the color tag and helps users tell `env` apart from `setopt` apart from `config`.
 
 ### Entry types
 
@@ -241,11 +156,19 @@ description = "Commands prefixed with a space are not saved. Useful for secrets.
 | `parameter` | Shell parameter (ZSH / Bash built-in variable) |
 | `setopt` | ZSH `setopt` option |
 | `shopt` | Bash `shopt` option |
-| `flag` | Command-line flag configurable via env or config file |
+| `config` | Config-file directive (e.g. systemd `[Service]` keys, Hyprland config lines) |
+| `flag` | CLI flag also exposed via env or config |
+
+### Validate before opening a PR
+
+```bash
+python3 -c "import tomllib, pathlib; [tomllib.loads(p.read_text()) for p in pathlib.Path('data').rglob('*.toml')]"
+python3 dotref.py --data-dir ./data <subsystem> <category>   # spot-check rendering
+```
 
 ---
 
-## 📊 Why Not Just Use the Man Page?
+## 📊 Why not just use the man page?
 
 | | `man zsh` | `dotref zsh` |
 |---|---|---|
@@ -258,7 +181,7 @@ description = "Commands prefixed with a space are not saved. Useful for secrets.
 
 ---
 
-## 📚 Sources Per Subsystem
+## 📚 Sources per subsystem
 
 Authoritative pages each subsystem's data should be sourced from:
 
@@ -277,7 +200,7 @@ Authoritative pages each subsystem's data should be sourced from:
 
 ---
 
-## 🔍 Prior Art & Related Tools
+## 🔍 Prior art & related tools
 
 | Tool | What it does | The gap |
 |------|-------------|---------|
@@ -291,29 +214,34 @@ Authoritative pages each subsystem's data should be sourced from:
 
 ---
 
-## 🚀 Project Status
+## 🚀 Project status
 
-This is currently a **concept / RFC**. It does not exist yet as a working tool.
+Working tool, early days. v0.2.0 ships with a CLI (~530 lines of Python), 9 subsystems, 31 files, ~430 knobs, an fzf-driven picker, color-coded type tags, ranked search, and `--json`/`--plain` output formats.
 
-**If you're a developer who wants to build this:**
+The real product is the data, not the code. The most valuable thing you can contribute is a `.toml` file for a subsystem you know — see the [planned subsystems table](#-subsystems) for what's wanted.
 
-- The CLI itself is probably ~200 lines of Python, Go, or Rust
-- The real value is in the database — and that can be crowdsourced
-- The format is intentionally simple so anyone can contribute a `.toml` file
-- A minimal `v0.1` with just ZSH + GTK + XDG would already be immediately useful
+### On the roadmap
 
-> 💬 **Open an issue if you want to build this, discuss the format, or contribute data for a subsystem.** PRs with just `.toml` data files are very welcome — you don't need to know how to code.
+- [ ] `dotref <subsystem> <name>` — direct lookup (e.g. `dotref zsh HISTFILE`)
+- [ ] `dotref --json` / `--plain` — machine-readable output
+- [ ] Smarter `search` ranking (exact > prefix > substring)
+- [ ] `[meta] docs = "..."` block per file, surfaced in output
+- [ ] `dotref update` — actually fetch latest data from the repo
+- [ ] More subsystems: `bash`, `qt`, `mesa`, `wayland`, `nvidia`, `x11`, `dbus`, `locale`, `color`
 
 ---
 
-## 🤝 Contributing an Entry
+## 🤝 Contributing
 
-You don't need to know how to code. Contributing is just editing a TOML file:
+You don't need to know how to code — contributing is just editing a TOML file:
 
 1. Fork this repo
 2. Find or create `data/<subsystem>/<category>.toml`
-3. Add your entry following the format above
-4. Open a PR with a link to the source documentation
+3. Add your entry following the [Data format](#️-data-format) above
+4. Validate with the snippet in that section
+5. Open a PR with a link to the source documentation
+
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the short version.
 
 ---
 

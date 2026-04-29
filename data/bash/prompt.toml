@@ -1,0 +1,54 @@
+# Bash prompt parameters
+# Source: man bash (PROMPTING section)
+
+[meta]
+docs = "https://www.gnu.org/software/bash/manual/html_node/Controlling-the-Prompt.html"
+
+[knob.PS1]
+name = "PS1"
+type = "parameter"
+description = "Primary prompt string shown before each command. Supports backslash escapes (\\u, \\h, \\w, \\$, etc.)."
+default = "\\s-\\v\\$ "
+example = "PS1='\\u@\\h:\\w\\$ '"
+
+[knob.PS2]
+name = "PS2"
+type = "parameter"
+description = "Secondary prompt shown when bash needs more input to complete a command."
+default = "> "
+example = "PS2='cont> '"
+
+[knob.PS3]
+name = "PS3"
+type = "parameter"
+description = "Prompt printed by the `select` builtin."
+default = ""
+example = "PS3='Pick one: '"
+
+[knob.PS4]
+name = "PS4"
+type = "parameter"
+description = "Prefix printed before each command bash traces with `set -x`. First char is repeated to indicate nesting."
+default = "+ "
+example = "PS4='+ ${BASH_SOURCE}:${LINENO}: '"
+
+[knob.PROMPT_COMMAND]
+name = "PROMPT_COMMAND"
+type = "parameter"
+description = "Command (or array of commands in Bash 5.1+) executed before each primary prompt is printed."
+default = ""
+example = "PROMPT_COMMAND='history -a'"
+
+[knob.PROMPT_DIRTRIM]
+name = "PROMPT_DIRTRIM"
+type = "parameter"
+description = "Number of trailing path components to keep when \\w is truncated; earlier ones become '...'."
+default = ""
+example = "PROMPT_DIRTRIM=3"
+
+[knob.promptvars]
+name = "promptvars"
+type = "shopt"
+description = "Expand parameter, command substitution, arithmetic, and quote removal in PS1-4."
+default = "on"
+example = "shopt -s promptvars"

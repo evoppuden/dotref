@@ -1,0 +1,236 @@
+# Bash shell parameters
+# Source: man bash (PARAMETERS section), https://www.gnu.org/software/bash/manual/
+
+[meta]
+docs = "https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html"
+
+[knob.BASH]
+name = "BASH"
+type = "parameter"
+description = "Full pathname used to invoke the current bash."
+default = ""
+example = "echo $BASH"
+
+[knob.BASH_VERSION]
+name = "BASH_VERSION"
+type = "parameter"
+description = "Version string of the running bash."
+default = ""
+example = "echo $BASH_VERSION"
+
+[knob.BASH_VERSINFO]
+name = "BASH_VERSINFO"
+type = "parameter"
+description = "Read-only array of version components: major, minor, patch, build, release, machtype."
+default = ""
+example = "echo ${BASH_VERSINFO[0]}"
+
+[knob.BASHOPTS]
+name = "BASHOPTS"
+type = "parameter"
+description = "Colon-separated list of enabled shopt options. Read-only."
+default = ""
+example = "echo $BASHOPTS"
+
+[knob.SHELLOPTS]
+name = "SHELLOPTS"
+type = "parameter"
+description = "Colon-separated list of enabled set -o options. Read-only."
+default = ""
+example = "echo $SHELLOPTS"
+
+[knob.IFS]
+name = "IFS"
+type = "parameter"
+description = "Internal field separator used for word splitting after expansion."
+default = "$' \\t\\n'"
+example = "IFS=$'\\n'"
+
+[knob.PATH]
+name = "PATH"
+type = "env"
+description = "Colon-separated search path for executables."
+default = ""
+example = "export PATH=\"$HOME/.local/bin:$PATH\""
+
+[knob.HOME]
+name = "HOME"
+type = "env"
+description = "Current user's home directory; default for `cd` with no arguments."
+default = ""
+example = "echo $HOME"
+
+[knob.SHELL]
+name = "SHELL"
+type = "env"
+description = "Path of the user's login shell. Set by login, not bash."
+default = ""
+example = "echo $SHELL"
+
+[knob.USER]
+name = "USER"
+type = "env"
+description = "Current user's login name."
+default = ""
+example = "echo $USER"
+
+[knob.UID]
+name = "UID"
+type = "parameter"
+description = "Numeric user ID of the current user. Read-only."
+default = ""
+example = "echo $UID"
+
+[knob.EUID]
+name = "EUID"
+type = "parameter"
+description = "Effective numeric user ID. Read-only."
+default = ""
+example = "echo $EUID"
+
+[knob.HOSTNAME]
+name = "HOSTNAME"
+type = "parameter"
+description = "Name of the current host."
+default = ""
+example = "echo $HOSTNAME"
+
+[knob.HOSTTYPE]
+name = "HOSTTYPE"
+type = "parameter"
+description = "String describing the host type bash is running on (e.g., x86_64)."
+default = ""
+example = "echo $HOSTTYPE"
+
+[knob.OSTYPE]
+name = "OSTYPE"
+type = "parameter"
+description = "String describing the operating system bash is running on."
+default = ""
+example = "echo $OSTYPE"
+
+[knob.MACHTYPE]
+name = "MACHTYPE"
+type = "parameter"
+description = "GNU cpu-vendor-os triplet string."
+default = ""
+example = "echo $MACHTYPE"
+
+[knob.PWD]
+name = "PWD"
+type = "parameter"
+description = "Current working directory as set by `cd`."
+default = ""
+example = "echo $PWD"
+
+[knob.OLDPWD]
+name = "OLDPWD"
+type = "parameter"
+description = "Previous working directory; restored by `cd -`."
+default = ""
+example = "echo $OLDPWD"
+
+[knob.CDPATH]
+name = "CDPATH"
+type = "env"
+description = "Colon-separated search path used by `cd` to resolve relative arguments."
+default = ""
+example = "export CDPATH=.:~:~/projects"
+
+[knob.GLOBIGNORE]
+name = "GLOBIGNORE"
+type = "parameter"
+description = "Colon-separated list of patterns excluded from pathname expansion."
+default = ""
+example = "GLOBIGNORE='.git:node_modules'"
+
+[knob.IGNOREEOF]
+name = "IGNOREEOF"
+type = "parameter"
+description = "Number of consecutive EOFs (Ctrl-D) needed to exit an interactive shell."
+default = ""
+example = "IGNOREEOF=2"
+
+[knob.TMOUT]
+name = "TMOUT"
+type = "parameter"
+description = "Idle timeout in seconds; an interactive shell exits after this many seconds of inactivity."
+default = "0"
+example = "TMOUT=600"
+
+[knob.BASH_SOURCE]
+name = "BASH_SOURCE"
+type = "parameter"
+description = "Array of source filenames corresponding to the FUNCNAME call stack."
+default = ""
+example = "echo \"${BASH_SOURCE[0]}\""
+
+[knob.BASH_LINENO]
+name = "BASH_LINENO"
+type = "parameter"
+description = "Array of line numbers in source files corresponding to the FUNCNAME call stack."
+default = ""
+example = "echo \"${BASH_LINENO[0]}\""
+
+[knob.FUNCNAME]
+name = "FUNCNAME"
+type = "parameter"
+description = "Array of names of all functions currently in the call stack."
+default = ""
+example = "echo \"${FUNCNAME[0]}\""
+
+[knob.LINENO]
+name = "LINENO"
+type = "parameter"
+description = "Current line number within the script or function."
+default = ""
+example = "echo $LINENO"
+
+[knob.RANDOM]
+name = "RANDOM"
+type = "parameter"
+description = "Each reference yields a random integer between 0 and 32767."
+default = ""
+example = "echo $RANDOM"
+
+[knob.SECONDS]
+name = "SECONDS"
+type = "parameter"
+description = "Seconds since the shell was started, or since SECONDS was last assigned."
+default = ""
+example = "SECONDS=0; sleep 2; echo $SECONDS"
+
+[knob.EPOCHSECONDS]
+name = "EPOCHSECONDS"
+type = "parameter"
+description = "Seconds since the Unix epoch (Bash 5+)."
+default = ""
+example = "echo $EPOCHSECONDS"
+
+[knob.EPOCHREALTIME]
+name = "EPOCHREALTIME"
+type = "parameter"
+description = "Seconds since the Unix epoch with microsecond precision (Bash 5+)."
+default = ""
+example = "echo $EPOCHREALTIME"
+
+[knob.MAILCHECK]
+name = "MAILCHECK"
+type = "parameter"
+description = "How often (in seconds) bash checks for mail."
+default = "60"
+example = "MAILCHECK=0"
+
+[knob.COLUMNS]
+name = "COLUMNS"
+type = "parameter"
+description = "Terminal width in columns; used by `select` and command-line editing."
+default = ""
+example = "echo $COLUMNS"
+
+[knob.LINES]
+name = "LINES"
+type = "parameter"
+description = "Terminal height in lines."
+default = ""
+example = "echo $LINES"

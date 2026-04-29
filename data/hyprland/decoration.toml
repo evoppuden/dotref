@@ -1,0 +1,111 @@
+# Hyprland decoration configuration
+# Set inside the decoration { } section of hyprland.conf.
+# Source: https://wiki.hyprland.org/Configuring/Variables/#decoration
+
+[meta]
+docs = "https://wiki.hyprland.org/Configuring/Variables/#decoration"
+
+[knob.rounding]
+name = "rounding"
+type = "config"
+description = "Window corner rounding radius in pixels (0 disables)"
+default = "0"
+example = "rounding = 8"
+
+[knob.active_opacity]
+name = "active_opacity"
+type = "config"
+description = "Opacity of the focused window (0.0 - 1.0)"
+default = "1.0"
+example = "active_opacity = 1.0"
+
+[knob.inactive_opacity]
+name = "inactive_opacity"
+type = "config"
+description = "Opacity of unfocused windows (0.0 - 1.0)"
+default = "1.0"
+example = "inactive_opacity = 0.9"
+
+[knob.fullscreen_opacity]
+name = "fullscreen_opacity"
+type = "config"
+description = "Opacity of fullscreen windows"
+default = "1.0"
+example = "fullscreen_opacity = 1.0"
+
+[knob.dim_inactive]
+name = "dim_inactive"
+type = "config"
+description = "Dim unfocused windows"
+default = "false"
+example = "dim_inactive = true"
+
+[knob.dim_strength]
+name = "dim_strength"
+type = "config"
+description = "Strength of inactive dim (0.0 - 1.0)"
+default = "0.5"
+example = "dim_strength = 0.2"
+
+[knob.blur_enabled]
+name = "blur:enabled"
+type = "config"
+description = "Enable Kawase blur for transparent surfaces"
+default = "true"
+example = "blur { enabled = true }"
+
+[knob.blur_size]
+name = "blur:size"
+type = "config"
+description = "Blur kernel size; larger = more blur, more GPU cost"
+default = "8"
+example = "blur { size = 6 }"
+
+[knob.blur_passes]
+name = "blur:passes"
+type = "config"
+description = "Number of blur passes; 1-2 is usually enough"
+default = "1"
+example = "blur { passes = 2 }"
+
+[knob.blur_new_optimizations]
+name = "blur:new_optimizations"
+type = "config"
+description = "Enable optimized blur path. Disable if you see artifacts."
+default = "true"
+example = "blur { new_optimizations = true }"
+
+[knob.blur_xray]
+name = "blur:xray"
+type = "config"
+description = "Make blur ignore everything except the wallpaper layer (see-through windows)"
+default = "false"
+example = "blur { xray = true }"
+
+[knob.shadow_enabled]
+name = "shadow:enabled"
+type = "config"
+description = "Enable drop shadows on windows"
+default = "true"
+example = "shadow { enabled = true }"
+
+[knob.shadow_range]
+name = "shadow:range"
+type = "config"
+description = "Shadow blur radius in pixels"
+default = "4"
+example = "shadow { range = 20 }"
+
+[knob.shadow_render_power]
+name = "shadow:render_power"
+type = "config"
+description = "Falloff curve of the shadow (1-4)"
+default = "3"
+example = "shadow { render_power = 3 }"
+
+[knob.shadow_color]
+name = "shadow:color"
+type = "config"
+description = "Color of the drop shadow"
+default = "0xee1a1a1a"
+example = "shadow { color = rgba(1a1a1aee) }"

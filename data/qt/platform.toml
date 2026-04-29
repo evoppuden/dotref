@@ -1,0 +1,89 @@
+# Qt platform abstraction (QPA) and plugin selection
+# Source: https://doc.qt.io/qt-6/qtenvironment.html, https://doc.qt.io/qt-6/qpa.html
+
+[meta]
+docs = "https://doc.qt.io/qt-6/qpa.html"
+
+[knob.QT_QPA_PLATFORM]
+name = "QT_QPA_PLATFORM"
+type = "env"
+description = "Force the Qt platform plugin (windowing backend). Multiple values can be tried in order, separated by ';'."
+default = ""
+example = "export QT_QPA_PLATFORM=wayland;xcb"
+
+[knob.QT_QPA_PLATFORMTHEME]
+name = "QT_QPA_PLATFORMTHEME"
+type = "env"
+description = "Platform theme plugin name (e.g., qt6ct, kde, gtk3, gnome). Controls dialogs, icons, palette."
+default = ""
+example = "export QT_QPA_PLATFORMTHEME=qt6ct"
+
+[knob.QT_QPA_PLATFORM_PLUGIN_PATH]
+name = "QT_QPA_PLATFORM_PLUGIN_PATH"
+type = "env"
+description = "Extra colon-separated directories to search for QPA platform plugins."
+default = ""
+example = "export QT_QPA_PLATFORM_PLUGIN_PATH=/usr/lib/qt6/plugins/platforms"
+
+[knob.QT_PLUGIN_PATH]
+name = "QT_PLUGIN_PATH"
+type = "env"
+description = "Colon-separated extra search paths for all Qt plugins (imageformats, styles, sqldrivers...)."
+default = ""
+example = "export QT_PLUGIN_PATH=/usr/lib/qt6/plugins"
+
+[knob.QT_WAYLAND_DISABLE_WINDOWDECORATION]
+name = "QT_WAYLAND_DISABLE_WINDOWDECORATION"
+type = "env"
+description = "Disable client-side window decorations on Wayland (1 = disable). Useful with tiling compositors."
+default = "0"
+example = "export QT_WAYLAND_DISABLE_WINDOWDECORATION=1"
+
+[knob.QT_WAYLAND_FORCE_DPI]
+name = "QT_WAYLAND_FORCE_DPI"
+type = "env"
+description = "Override the DPI value reported by the Wayland compositor for Qt apps. Use 'physical' for monitor's physical DPI."
+default = ""
+example = "export QT_WAYLAND_FORCE_DPI=96"
+
+[knob.QT_WAYLAND_RECONNECT]
+name = "QT_WAYLAND_RECONNECT"
+type = "env"
+description = "Reconnect to a new compositor instance after the previous one died (Qt 6.5+)."
+default = "0"
+example = "export QT_WAYLAND_RECONNECT=1"
+
+[knob.QT_QPA_FONTDIR]
+name = "QT_QPA_FONTDIR"
+type = "env"
+description = "Override the directory Qt searches for embedded fonts (used by minimal/offscreen platforms)."
+default = ""
+example = "export QT_QPA_FONTDIR=/usr/share/fonts"
+
+[knob.QT_IM_MODULE]
+name = "QT_IM_MODULE"
+type = "env"
+description = "Input method module: ibus, fcitx, fcitx5, xim. Drives non-Latin text input."
+default = ""
+example = "export QT_IM_MODULE=fcitx"
+
+[knob.QT_ACCESSIBILITY]
+name = "QT_ACCESSIBILITY"
+type = "env"
+description = "Enable AT-SPI accessibility bridge (1 = on)."
+default = "0"
+example = "export QT_ACCESSIBILITY=1"
+
+[knob.QT_QPA_EGLFS_INTEGRATION]
+name = "QT_QPA_EGLFS_INTEGRATION"
+type = "env"
+description = "Hardware integration backend for the eglfs platform plugin (kms, x11, brcm, mali...)."
+default = ""
+example = "export QT_QPA_EGLFS_INTEGRATION=eglfs_kms"
+
+[knob.QT_QPA_OFFSCREEN_NO_GLX_PIXMAPS]
+name = "QT_QPA_OFFSCREEN_NO_GLX_PIXMAPS"
+type = "env"
+description = "Disable GLX pixmap usage in the offscreen platform plugin (workaround for some drivers)."
+default = "0"
+example = "export QT_QPA_OFFSCREEN_NO_GLX_PIXMAPS=1"

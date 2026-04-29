@@ -1,0 +1,61 @@
+# Qt high-DPI and scaling
+# Source: https://doc.qt.io/qt-6/highdpi.html
+
+[meta]
+docs = "https://doc.qt.io/qt-6/highdpi.html"
+
+[knob.QT_AUTO_SCREEN_SCALE_FACTOR]
+name = "QT_AUTO_SCREEN_SCALE_FACTOR"
+type = "env"
+description = "Enable automatic per-screen scale factor based on each screen's DPI (Qt 5 legacy; replaced by QT_ENABLE_HIGHDPI_SCALING in Qt 6)."
+default = "0"
+example = "export QT_AUTO_SCREEN_SCALE_FACTOR=1"
+
+[knob.QT_ENABLE_HIGHDPI_SCALING]
+name = "QT_ENABLE_HIGHDPI_SCALING"
+type = "env"
+description = "Enable Qt's high-DPI scaling. On by default in Qt 6; set to 0 to disable."
+default = "1"
+example = "export QT_ENABLE_HIGHDPI_SCALING=0"
+
+[knob.QT_SCALE_FACTOR]
+name = "QT_SCALE_FACTOR"
+type = "env"
+description = "Global scale factor applied to every Qt application window."
+default = "1"
+example = "export QT_SCALE_FACTOR=1.5"
+
+[knob.QT_SCREEN_SCALE_FACTORS]
+name = "QT_SCREEN_SCALE_FACTORS"
+type = "env"
+description = "Per-screen scale factors. Either a semicolon-separated list of factors, or 'name=factor' pairs."
+default = ""
+example = "export QT_SCREEN_SCALE_FACTORS='DP-1=1.5;HDMI-A-1=1'"
+
+[knob.QT_FONT_DPI]
+name = "QT_FONT_DPI"
+type = "env"
+description = "Override the DPI used for font rendering. Decouple font scaling from window scaling."
+default = ""
+example = "export QT_FONT_DPI=96"
+
+[knob.QT_USE_PHYSICAL_DPI]
+name = "QT_USE_PHYSICAL_DPI"
+type = "env"
+description = "Use physical screen DPI instead of the logical 96 DPI baseline."
+default = "0"
+example = "export QT_USE_PHYSICAL_DPI=1"
+
+[knob.QT_SCALE_FACTOR_ROUNDING_POLICY]
+name = "QT_SCALE_FACTOR_ROUNDING_POLICY"
+type = "env"
+description = "How fractional scale factors are rounded: Round, Ceil, Floor, RoundPreferFloor, PassThrough."
+default = "PassThrough"
+example = "export QT_SCALE_FACTOR_ROUNDING_POLICY=RoundPreferFloor"
+
+[knob.QT_HIGHDPI_DISABLE_2X_IMAGE_LOADING]
+name = "QT_HIGHDPI_DISABLE_2X_IMAGE_LOADING"
+type = "env"
+description = "Disable automatic loading of @2x high-DPI image variants."
+default = "0"
+example = "export QT_HIGHDPI_DISABLE_2X_IMAGE_LOADING=1"

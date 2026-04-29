@@ -1,37 +1,68 @@
-# ZSH configuration knobs
+# ZSH history parameters and setopts
+# Source: man zshparam, man zshoptions
+
+[meta]
+docs = "https://zsh.sourceforge.io/Doc/Release/Parameters.html"
 
 [knob.HISTFILE]
 name = "HISTFILE"
+type = "parameter"
 description = "Path to the ZSH history file"
 default = "~/.zsh_history"
-example = "export HISTFILE=~/.zsh_history"
+example = "HISTFILE=~/.zsh_history"
 
 [knob.HISTSIZE]
 name = "HISTSIZE"
-description = "Maximum number of history events to save in memory"
+type = "parameter"
+description = "Maximum number of history events to keep in memory during a session"
 default = "10000"
-example = "export HISTSIZE=50000"
+example = "HISTSIZE=50000"
+
+[knob.SAVEHIST]
+name = "SAVEHIST"
+type = "parameter"
+description = "Maximum events written to HISTFILE on exit. Should be <= HISTSIZE."
+default = ""
+example = "SAVEHIST=50000"
 
 [knob.SHARE_HISTORY]
 name = "SHARE_HISTORY"
-description = "Share history between all ZSH sessions (uses inc_append)"
+type = "setopt"
+description = "Share history in real time across all open ZSH sessions"
 default = "unset"
 example = "setopt SHARE_HISTORY"
 
 [knob.APPEND_HISTORY]
 name = "APPEND_HISTORY"
-description = "Append to history file instead of overwriting"
+type = "setopt"
+description = "Append to the history file instead of overwriting"
 default = "set"
 example = "setopt APPEND_HISTORY"
 
 [knob.HIST_IGNORE_SPACE]
 name = "HIST_IGNORE_SPACE"
-description = "Don't enter commands starting with a space into history"
+type = "setopt"
+description = "Don't record commands starting with a space. Useful for secrets."
 default = "unset"
 example = "setopt HIST_IGNORE_SPACE"
 
+[knob.HIST_IGNORE_DUPS]
+name = "HIST_IGNORE_DUPS"
+type = "setopt"
+description = "Don't record a command if identical to the previous one"
+default = "unset"
+example = "setopt HIST_IGNORE_DUPS"
+
 [knob.HIST_EXPIRE_DUPS_FIRST]
 name = "HIST_EXPIRE_DUPS_FIRST"
-description = "Expire duplicate entries first when trimming history"
+type = "setopt"
+description = "When trimming history, expire duplicate entries before unique ones"
 default = "unset"
 example = "setopt HIST_EXPIRE_DUPS_FIRST"
+
+[knob.HIST_VERIFY]
+name = "HIST_VERIFY"
+type = "setopt"
+description = "Show the expanded history command for confirmation before executing"
+default = "unset"
+example = "setopt HIST_VERIFY"

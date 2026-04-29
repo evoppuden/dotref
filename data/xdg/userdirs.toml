@@ -1,0 +1,61 @@
+# XDG User Directories
+# Source: man xdg-user-dirs, ~/.config/user-dirs.dirs
+
+[meta]
+docs = "https://www.freedesktop.org/wiki/Software/xdg-user-dirs/"
+
+[knob.XDG_DESKTOP_DIR]
+name = "XDG_DESKTOP_DIR"
+type = "env"
+description = "Path to the user's Desktop directory"
+default = "$HOME/Desktop"
+example = "XDG_DESKTOP_DIR=\"$HOME/Desktop\""
+
+[knob.XDG_DOWNLOAD_DIR]
+name = "XDG_DOWNLOAD_DIR"
+type = "env"
+description = "Path to the user's Downloads directory"
+default = "$HOME/Downloads"
+example = "XDG_DOWNLOAD_DIR=\"$HOME/Downloads\""
+
+[knob.XDG_TEMPLATES_DIR]
+name = "XDG_TEMPLATES_DIR"
+type = "env"
+description = "Path to the user's Templates directory"
+default = "$HOME/Templates"
+example = "XDG_TEMPLATES_DIR=\"$HOME/Templates\""
+
+[knob.XDG_PUBLICSHARE_DIR]
+name = "XDG_PUBLICSHARE_DIR"
+type = "env"
+description = "Path to the user's Public share directory"
+default = "$HOME/Public"
+example = "XDG_PUBLICSHARE_DIR=\"$HOME/Public\""
+
+[knob.XDG_DOCUMENTS_DIR]
+name = "XDG_DOCUMENTS_DIR"
+type = "env"
+description = "Path to the user's Documents directory"
+default = "$HOME/Documents"
+example = "XDG_DOCUMENTS_DIR=\"$HOME/Documents\""
+
+[knob.XDG_MUSIC_DIR]
+name = "XDG_MUSIC_DIR"
+type = "env"
+description = "Path to the user's Music directory"
+default = "$HOME/Music"
+example = "XDG_MUSIC_DIR=\"$HOME/Music\""
+
+[knob.XDG_PICTURES_DIR]
+name = "XDG_PICTURES_DIR"
+type = "env"
+description = "Path to the user's Pictures directory"
+default = "$HOME/Pictures"
+example = "XDG_PICTURES_DIR=\"$HOME/Pictures\""
+
+[knob.XDG_VIDEOS_DIR]
+name = "XDG_VIDEOS_DIR"
+type = "env"
+description = "Path to the user's Videos directory"
+default = "$HOME/Videos"
+example = "XDG_VIDEOS_DIR=\"$HOME/Videos\""

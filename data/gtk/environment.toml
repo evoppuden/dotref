@@ -1,38 +1,54 @@
-# GTK configuration knobs
-# Format for dotref
+# GTK environment variables
+# Source: https://docs.gtk.org/gtk3/running.html
+
+[meta]
+docs = "https://docs.gtk.org/gtk4/running.html"
 
 [knob.GTK_THEME]
 name = "GTK_THEME"
-description = "Sets the GTK theme for all GTK applications"
+type = "env"
+description = "Sets the GTK theme for all GTK applications. Append :dark or :light for variant."
 default = ""
 example = "export GTK_THEME=Adwaita:dark"
 
 [knob.GTK_CSD]
 name = "GTK_CSD"
+type = "env"
 description = "Controls Client-Side Decorations for GTK apps (0=disable, 1=enable)"
 default = "1"
 example = "export GTK_CSD=0"
 
 [knob.GTK_MODULES]
 name = "GTK_MODULES"
+type = "env"
 description = "Colon-separated list of GTK modules to load"
 default = ""
 example = "export GTK_MODULES=gail:atk-bridge"
 
 [knob.GTK_IM_MODULE]
 name = "GTK_IM_MODULE"
+type = "env"
 description = "Input method module for GTK applications"
 default = "ibus"
 example = "export GTK_IM_MODULE=fcitx"
 
 [knob.GDK_SCALE]
 name = "GDK_SCALE"
-description = "Scale factor for GDK/HiDPI displays"
+type = "env"
+description = "Integer scale factor for GDK/HiDPI displays"
 default = "1"
 example = "export GDK_SCALE=2"
 
 [knob.GDK_DPI_SCALE]
 name = "GDK_DPI_SCALE"
-description = "Fractional scaling factor for GDK displays"
+type = "env"
+description = "Fractional scaling factor for GDK displays. Combine with GDK_SCALE for non-integer ratios."
 default = "1.0"
 example = "export GDK_DPI_SCALE=0.8"
+
+[knob.GDK_BACKEND]
+name = "GDK_BACKEND"
+type = "env"
+description = "Force a specific GDK rendering backend. Comma-separated priority list."
+default = ""
+example = "export GDK_BACKEND=wayland,x11"

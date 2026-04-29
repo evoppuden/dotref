@@ -1,0 +1,96 @@
+# Mesa debugging and diagnostics
+# Source: https://docs.mesa3d.org/envvars.html
+
+[meta]
+docs = "https://docs.mesa3d.org/envvars.html"
+
+[knob.MESA_DEBUG]
+name = "MESA_DEBUG"
+type = "env"
+description = "Comma-separated debug flags: silent, flush, incomplete_tex, incomplete_fbo, context."
+default = ""
+example = "export MESA_DEBUG=context,flush"
+
+[knob.MESA_VERBOSE]
+name = "MESA_VERBOSE"
+type = "env"
+description = "Comma-separated verbosity flags: varray, tex, swap, draw, state, api, list, lighting, disassem, primes."
+default = ""
+example = "export MESA_VERBOSE=api,draw"
+
+[knob.LIBGL_DEBUG]
+name = "LIBGL_DEBUG"
+type = "env"
+description = "Print loader debug info: 'verbose' enables full loader trace."
+default = ""
+example = "export LIBGL_DEBUG=verbose"
+
+[knob.LIBGL_SHOW_FPS]
+name = "LIBGL_SHOW_FPS"
+type = "env"
+description = "Print rough FPS to stderr at intervals; legacy DRI extension."
+default = "0"
+example = "export LIBGL_SHOW_FPS=1"
+
+[knob.MESA_LOG_FILE]
+name = "MESA_LOG_FILE"
+type = "env"
+description = "Redirect Mesa diagnostic output to a file."
+default = "stderr"
+example = "export MESA_LOG_FILE=/tmp/mesa.log"
+
+[knob.GALLIUM_HUD]
+name = "GALLIUM_HUD"
+type = "env"
+description = "On-screen HUD with FPS, frametime, GPU stats. See docs for query syntax."
+default = ""
+example = "export GALLIUM_HUD=fps,cpu,GPU-load"
+
+[knob.GALLIUM_TRACE]
+name = "GALLIUM_TRACE"
+type = "env"
+description = "Path to a file where Gallium API calls are traced (XML format)."
+default = ""
+example = "export GALLIUM_TRACE=/tmp/trace.xml"
+
+[knob.GALLIUM_DUMP_CPU]
+name = "GALLIUM_DUMP_CPU"
+type = "env"
+description = "Dump CPU detection info on Gallium driver startup."
+default = "0"
+example = "export GALLIUM_DUMP_CPU=1"
+
+[knob.MESA_SHADER_CACHE_DISABLE]
+name = "MESA_SHADER_CACHE_DISABLE"
+type = "env"
+description = "Disable on-disk shader cache. Use to debug compilation issues; expect slower load times."
+default = "false"
+example = "export MESA_SHADER_CACHE_DISABLE=true"
+
+[knob.MESA_SHADER_CACHE_DIR]
+name = "MESA_SHADER_CACHE_DIR"
+type = "env"
+description = "Override the on-disk shader cache directory."
+default = "$XDG_CACHE_HOME/mesa_shader_cache"
+example = "export MESA_SHADER_CACHE_DIR=/tmp/mesa_cache"
+
+[knob.MESA_SHADER_CACHE_MAX_SIZE]
+name = "MESA_SHADER_CACHE_MAX_SIZE"
+type = "env"
+description = "Max disk size for the shader cache: e.g., 256M, 1G."
+default = "1G"
+example = "export MESA_SHADER_CACHE_MAX_SIZE=4G"
+
+[knob.MESA_LOADER_DRIVER_OVERRIDE]
+name = "MESA_LOADER_DRIVER_OVERRIDE"
+type = "env"
+description = "Force a specific driver — also useful in debug to compare driver behaviour."
+default = ""
+example = "export MESA_LOADER_DRIVER_OVERRIDE=llvmpipe"
+
+[knob.NIR_DEBUG]
+name = "NIR_DEBUG"
+type = "env"
+description = "Comma-separated flags for NIR (the shader IR): print, validate, validate_ssa_dominance, clone..."
+default = ""
+example = "export NIR_DEBUG=print"

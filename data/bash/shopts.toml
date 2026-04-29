@@ -1,0 +1,173 @@
+# Bash shopt options (shell behaviour toggles)
+# Source: man bash (SHELL BUILTIN COMMANDS — shopt)
+
+[meta]
+docs = "https://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html"
+
+[knob.autocd]
+name = "autocd"
+type = "shopt"
+description = "Treat a command name that is a directory as if it were the argument to `cd`."
+default = "off"
+example = "shopt -s autocd"
+
+[knob.cdable_vars]
+name = "cdable_vars"
+type = "shopt"
+description = "Allow `cd <varname>` to behave as `cd $varname` if varname is not a directory."
+default = "off"
+example = "shopt -s cdable_vars"
+
+[knob.cdspell]
+name = "cdspell"
+type = "shopt"
+description = "Correct minor typos in directory names passed to `cd` (interactive shells only)."
+default = "off"
+example = "shopt -s cdspell"
+
+[knob.checkhash]
+name = "checkhash"
+type = "shopt"
+description = "Re-check the hashed location of a command before executing it; fall back to PATH if missing."
+default = "off"
+example = "shopt -s checkhash"
+
+[knob.checkjobs]
+name = "checkjobs"
+type = "shopt"
+description = "List the status of any stopped or running jobs before exiting an interactive shell."
+default = "off"
+example = "shopt -s checkjobs"
+
+[knob.checkwinsize]
+name = "checkwinsize"
+type = "shopt"
+description = "After each command, check window size and update LINES/COLUMNS. Usually on by default."
+default = "on"
+example = "shopt -s checkwinsize"
+
+[knob.dirspell]
+name = "dirspell"
+type = "shopt"
+description = "Attempt directory-name correction during word completion if the directory doesn't exist."
+default = "off"
+example = "shopt -s dirspell"
+
+[knob.dotglob]
+name = "dotglob"
+type = "shopt"
+description = "Include filenames starting with '.' in pathname expansion."
+default = "off"
+example = "shopt -s dotglob"
+
+[knob.execfail]
+name = "execfail"
+type = "shopt"
+description = "Don't exit a non-interactive shell if `exec` fails to find the command."
+default = "off"
+example = "shopt -s execfail"
+
+[knob.expand_aliases]
+name = "expand_aliases"
+type = "shopt"
+description = "Expand aliases. On for interactive shells; off for scripts."
+default = "on (interactive) / off (script)"
+example = "shopt -s expand_aliases"
+
+[knob.extglob]
+name = "extglob"
+type = "shopt"
+description = "Enable extended pattern matching: ?(p), *(p), +(p), @(p), !(p)."
+default = "off"
+example = "shopt -s extglob"
+
+[knob.failglob]
+name = "failglob"
+type = "shopt"
+description = "Cause unmatched globs to produce an error rather than passing the literal pattern through."
+default = "off"
+example = "shopt -s failglob"
+
+[knob.globstar]
+name = "globstar"
+type = "shopt"
+description = "Make `**` match files and zero-or-more directories recursively."
+default = "off"
+example = "shopt -s globstar"
+
+[knob.huponexit]
+name = "huponexit"
+type = "shopt"
+description = "Send SIGHUP to running jobs when an interactive login shell exits."
+default = "off"
+example = "shopt -s huponexit"
+
+[knob.inherit_errexit]
+name = "inherit_errexit"
+type = "shopt"
+description = "Make command substitutions inherit `set -e` from the parent shell."
+default = "off"
+example = "shopt -s inherit_errexit"
+
+[knob.interactive_comments]
+name = "interactive_comments"
+type = "shopt"
+description = "Allow # comments in interactive shells (otherwise # would just be the first character of a word)."
+default = "on"
+example = "shopt -s interactive_comments"
+
+[knob.lastpipe]
+name = "lastpipe"
+type = "shopt"
+description = "Run the last command of a pipeline in the current shell context (so var assignments survive). Job control must be off."
+default = "off"
+example = "shopt -s lastpipe"
+
+[knob.nocaseglob]
+name = "nocaseglob"
+type = "shopt"
+description = "Match filenames in pathname expansion without regard to case."
+default = "off"
+example = "shopt -s nocaseglob"
+
+[knob.nocasematch]
+name = "nocasematch"
+type = "shopt"
+description = "Match patterns in `case` and `[[` without regard to case."
+default = "off"
+example = "shopt -s nocasematch"
+
+[knob.nullglob]
+name = "nullglob"
+type = "shopt"
+description = "Patterns matching nothing expand to nothing instead of the literal pattern."
+default = "off"
+example = "shopt -s nullglob"
+
+[knob.progcomp]
+name = "progcomp"
+type = "shopt"
+description = "Enable programmable completion (the `complete` builtin)."
+default = "on"
+example = "shopt -s progcomp"
+
+[knob.shift_verbose]
+name = "shift_verbose"
+type = "shopt"
+description = "Make `shift` print an error when the count exceeds positional parameter count."
+default = "off"
+example = "shopt -s shift_verbose"
+
+[knob.sourcepath]
+name = "sourcepath"
+type = "shopt"
+description = "Make `source`/`.` use PATH to find the file argument."
+default = "on"
+example = "shopt -s sourcepath"
+
+[knob.xpg_echo]
+name = "xpg_echo"
+type = "shopt"
+description = "Make `echo` interpret backslash-escape sequences by default (without -e)."
+default = "off"
+example = "shopt -s xpg_echo"

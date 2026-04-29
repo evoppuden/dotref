@@ -1,0 +1,83 @@
+# Hyprland environment variables
+# Variables Hyprland reads at startup and exports for clients.
+# Source: https://wiki.hyprland.org/Configuring/Environment-variables/
+
+[meta]
+docs = "https://wiki.hyprland.org/Configuring/Environment-variables/"
+
+[knob.HYPRLAND_LOG_WLR]
+name = "HYPRLAND_LOG_WLR"
+type = "env"
+description = "Enable verbose logging from the underlying wlroots/aquamarine layer. Useful for debugging input/output issues."
+default = "0"
+example = "export HYPRLAND_LOG_WLR=1"
+
+[knob.HYPRLAND_NO_RT]
+name = "HYPRLAND_NO_RT"
+type = "env"
+description = "Disable Hyprland's request for SCHED_RR realtime scheduling. Set if RTKit/PAM does not grant rtprio."
+default = "0"
+example = "export HYPRLAND_NO_RT=1"
+
+[knob.HYPRLAND_NO_SD_NOTIFY]
+name = "HYPRLAND_NO_SD_NOTIFY"
+type = "env"
+description = "Disable sd_notify() readiness signaling to systemd. Set when launching outside a systemd unit."
+default = "0"
+example = "export HYPRLAND_NO_SD_NOTIFY=1"
+
+[knob.HYPRLAND_NO_SD_VARS]
+name = "HYPRLAND_NO_SD_VARS"
+type = "env"
+description = "Skip importing WAYLAND_DISPLAY/DISPLAY/XDG_CURRENT_DESKTOP into the systemd user environment via dbus-update-activation-environment / systemctl --user import-environment."
+default = "0"
+example = "export HYPRLAND_NO_SD_VARS=1"
+
+[knob.HYPRLAND_TRACE]
+name = "HYPRLAND_TRACE"
+type = "env"
+description = "Enable Hyprland's trace logging. Very noisy; only use when debugging."
+default = "0"
+example = "export HYPRLAND_TRACE=1"
+
+[knob.HYPRLAND_INSTANCE_SIGNATURE]
+name = "HYPRLAND_INSTANCE_SIGNATURE"
+type = "env"
+description = "Unique signature of the running Hyprland instance. Set by Hyprland; used by hyprctl and IPC sockets in $XDG_RUNTIME_DIR/hypr/<sig>/."
+default = "(set by Hyprland)"
+example = "echo $HYPRLAND_INSTANCE_SIGNATURE"
+
+[knob.HYPRCURSOR_THEME]
+name = "HYPRCURSOR_THEME"
+type = "env"
+description = "Name of the hyprcursor theme to use for the cursor. Falls back to XCURSOR_THEME if unset."
+default = ""
+example = "export HYPRCURSOR_THEME=Bibata-Modern-Classic"
+
+[knob.HYPRCURSOR_SIZE]
+name = "HYPRCURSOR_SIZE"
+type = "env"
+description = "Cursor size in pixels for hyprcursor. Falls back to XCURSOR_SIZE if unset."
+default = ""
+example = "export HYPRCURSOR_SIZE=24"
+
+[knob.AQ_TRACE]
+name = "AQ_TRACE"
+type = "env"
+description = "Enable trace logging in aquamarine, Hyprland's backend library."
+default = "0"
+example = "export AQ_TRACE=1"
+
+[knob.AQ_NO_ATOMIC]
+name = "AQ_NO_ATOMIC"
+type = "env"
+description = "Disable atomic KMS modesetting in aquamarine. Workaround for buggy DRM drivers."
+default = "0"
+example = "export AQ_NO_ATOMIC=1"
+
+[knob.AQ_FORCE_GBM]
+name = "AQ_FORCE_GBM"
+type = "env"
+description = "Force the GBM allocator instead of GBM-with-modifiers detection. Workaround for some NVIDIA setups."
+default = "0"
+example = "export AQ_FORCE_GBM=1"
